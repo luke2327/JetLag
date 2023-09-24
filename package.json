@@ -1,9 +1,9 @@
 {
-  "name": "ts-nextjs-tailwind-starter",
-  "version": "0.1.0",
+  "name": "JetLag",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -14,10 +14,11 @@
     "test": "jest",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
-    "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "prepare": "husky install"
+    "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.17.0",
+    "antd": "^5.9.2",
     "clsx": "^1.2.1",
     "lucide-react": "^0.260.0",
     "next": "^13.4.10",
@@ -29,8 +30,8 @@
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
-    "@tailwindcss/forms": "^0.5.4",
     "@svgr/webpack": "^8.0.1",
+    "@tailwindcss/forms": "^0.5.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/react": "^18.2.15",
@@ -42,8 +43,6 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "^7.0.4",
-    "jest": "^27.5.1",
     "lint-staged": "^12.5.0",
     "next-router-mock": "^0.7.5",
     "next-sitemap": "^2.5.28",
