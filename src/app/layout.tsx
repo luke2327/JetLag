@@ -1,11 +1,18 @@
 import { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import * as React from 'react';
 
 import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
+import '@/styles/globals.css';
+
+import BackgroundClock from '@/components/layout/BackgroundClock';
+import Header from '@/components/layout/Header';
 
 import { siteConfig } from '@/constant/config';
+
+import StyledComponentsRegistry from '../lib/AntdRegistry';
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
@@ -48,14 +55,19 @@ export const metadata: Metadata = {
   // ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html>
-      <body>{children}</body>
-    </html>
-  );
-}
+const inter = Inter({ subsets: ['latin'] });
+
+const RootLayout = ({ children }: React.PropsWithChildren) => (
+  <html lang='en'>
+    <body className={inter.className}>
+      <StyledComponentsRegistry>
+        <BackgroundClock>
+          <Header />
+          {children}
+        </BackgroundClock>
+      </StyledComponentsRegistry>
+    </body>
+  </html>
+);
+
+export default RootLayout;
