@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 
-import UnderlineLink from '@/components/links/UnderlineLink';
 import Title from '@/components/Title';
 
 /**
@@ -19,18 +18,8 @@ import Title from '@/components/Title';
 
 export default function HomePage() {
   return (
-    <>
-      <section>
-        <div className='layout relative flex min-h-screen flex-col items-center justify-center text-center'>
-          <Title title='Welcome to JetLag' />
-          <footer className='absolute bottom-2 text-gray-700'>
-            © {new Date().getFullYear()} By{' '}
-            <UnderlineLink href='https://theodorusclarence.com?ref=tsnextstarter'>
-              Theodorus Clarence
-            </UnderlineLink>
-          </footer>
-        </div>
-      </section>
-    </>
+    <div className='layout relative flex flex-col items-center justify-center text-center'>
+      <Title title='Welcome to JetLag' />
+    </div>
   );
 }

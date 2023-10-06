@@ -9,6 +9,7 @@ import '@/styles/globals.css';
 
 import BackgroundClock from '@/components/layout/BackgroundClock';
 import Header from '@/components/layout/Header';
+import EaseOut from '@/components/motion/EaseOut';
 
 import { siteConfig } from '@/constant/config';
 
@@ -63,7 +64,9 @@ const RootLayout = ({ children }: React.PropsWithChildren) => (
       <StyledComponentsRegistry>
         <BackgroundClock>
           <Header />
-          {children}
+          <EaseOut>
+            <section className='ivory'>{children}</section>
+          </EaseOut>
         </BackgroundClock>
       </StyledComponentsRegistry>
     </body>

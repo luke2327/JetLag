@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className='flex w-[100vw] items-center sm:h-12'>
+    <header className='sticky top-0 flex w-[100vw] items-center sm:h-12'>
       <ul className='flex w-full justify-around'>
         <li>
           <Link className='linear-ivory-text' href='/'>

@@ -444,7 +444,7 @@ const colorList = [
   'red',
   'orange',
   'amber',
-  'yellow',
+  'ivory',
   'lime',
   'green',
   'emerald',

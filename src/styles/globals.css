@@ -32,6 +32,7 @@
   --ivory: #F8F5E3;
   --light: #fffdf3;
   --lightbrown: #aba085;
+  --textbrown: #6e6e6e;
 }
 
 @layer base {
@@ -160,4 +161,18 @@ header {
 .transparent-layer {
   background: linear-gradient(135deg, rgba(73,72,67,1) 0%, rgba(75,73,60,0.4) 100%);
   border-radius: 4px;
+}
+
+section {
+  height: calc(100vh - 48px);
+  display: flex;
+  align-items: center;
+}
+
+.ivory * {
+  transition: all .15s;
+}
+
+.ivory button:hover {
+  color: var(--ivory) !important;
 }

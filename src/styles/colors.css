@@ -200,14 +200,14 @@
   --color-primary-950: rgb(var(--tw-color-primary-950)); /* #451a03 */
 }
 
-.yellow {
+.ivory {
   --tw-color-primary-50: 254 252 232;
   --tw-color-primary-100: 254 249 195;
   --tw-color-primary-200: 254 240 138;
   --tw-color-primary-300: 253 224 71;
   --tw-color-primary-400: 250 204 21;
-  --tw-color-primary-500: 234 179 8;
-  --tw-color-primary-600: 202 138 4;
+  --tw-color-primary-500: 255 253 243;
+  --tw-color-primary-600: 73 67 54;
   --tw-color-primary-700: 161 98 7;
   --tw-color-primary-800: 133 77 14;
   --tw-color-primary-900: 113 63 18;
