@@ -1,68 +1,58 @@
 'use client';
 
-import { Modal } from 'antd';
+import { Col, Row } from 'antd';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 import Button from '@/components/buttons/Button';
+import CalcSleep from '@/components/modal/CalcSleep';
 import EaseOut from '@/components/motion/EaseOut';
 import Title from '@/components/Title';
 import TransparentLayer from '@/components/TransparentLayer';
 
-const sleepCalculate = () => {
-  Modal.info({
-    title: 'This is a notification message',
-    content: (
-      <div>
-        <p>some messages...some messages...</p>
-        <p>some messages...some messages...</p>
-      </div>
-    ),
-  });
-};
-
 export default function HomePage() {
+  const [calcSleepModal, setCalcSleepModal] = useState<boolean>(false);
   return (
     <div className='layout relative text-center sm:pt-4'>
       <EaseOut>
         <Title title='Jet Lag Service' />
       </EaseOut>
       <TransparentLayer className='flex justify-center gap-2'>
-        <AccentButton delay={1} title='수면시간 추천' />
-        <AccentButton delay={1.3} title='수면시간 계산기' />
-        <AccentButton delay={1.6} title='JetLag' />
+        <Row gutter={[16, 16]}>
+          <Col xs={24} sm={8}>
+            <AccentButton delay={0.5} title='수면시간 추천' />
+          </Col>
+          <Col xs={24} sm={8}>
+            <AccentButton
+              delay={0.8}
+              title='수면시간 계산기'
+              onClickFn={setCalcSleepModal}
+            />
+          </Col>
+          <Col xs={24} sm={8}>
+            <AccentButton delay={1.1} title='JetLag' />
+          </Col>
+        </Row>
         {/*<Button2 onClick={sleepCalculate}>sss</Button2>*/}
       </TransparentLayer>
+      <CalcSleep isModalOpen={calcSleepModal} setModal={setCalcSleepModal} />
     </div>
-  );
-}
-
-function IvoryButton(params: { title: string; onClick?: any }) {
-  return (
-    <Button
-      variant='primary'
-      style={{ color: 'var(--textbrown)' }}
-      className='rounded-xl'
-    >
-      {params.title}
-    </Button>
   );
 }
 
 function AccentButton({
   delay,
   title,
-  btnLink,
-  btnDisabled,
+  onClickFn,
 }: {
   delay: number;
   title: string;
-  btnLink?: string;
-  btnDisabled?: boolean;
+  onClickFn?: (x: boolean) => void;
 }) {
   return (
     <motion.div
       initial={{
-        top: 40,
+        top: 20,
         opacity: 0,
       }}
       animate={{
@@ -79,7 +69,8 @@ function AccentButton({
       <Button
         variant='primary'
         style={{ color: 'var(--textbrown)' }}
-        className='rounded-xl'
+        className='whitespace-nowrap rounded-xl'
+        onClick={() => onClickFn && onClickFn(true)}
       >
         {title}
       </Button>
