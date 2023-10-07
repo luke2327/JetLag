@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 
 export default function EaseOut({
   children,
-  delay,
+  delay = 0,
 }: {
   children: ReactNode;
   delay?: number;
@@ -13,10 +13,10 @@ export default function EaseOut({
   return (
     <LazyMotion features={domAnimation}>
       <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{
-          duration: 0.8,
+          duration: 0.4,
           delay: delay,
           ease: [0, 0.71, 0.2, 1.01],
         }}
