@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 import Button from '@/components/buttons/Button';
+import CalcFlight from '@/components/modal/CalcFlight';
 import CalcSleep from '@/components/modal/CalcSleep';
 import EaseOut from '@/components/motion/EaseOut';
 import Title from '@/components/Title';
@@ -12,6 +13,8 @@ import TransparentLayer from '@/components/TransparentLayer';
 
 export default function HomePage() {
   const [calcSleepModal, setCalcSleepModal] = useState<boolean>(false);
+  const [calcFlightModal, setCalcFlightModal] = useState<boolean>(false);
+
   return (
     <div className='layout relative text-center sm:pt-4'>
       <EaseOut>
@@ -30,12 +33,17 @@ export default function HomePage() {
             />
           </Col>
           <Col xs={24} sm={8}>
-            <AccentButton delay={1.1} title='JetLag' />
+            <AccentButton
+              delay={1.1}
+              title='JetLag'
+              onClickFn={setCalcFlightModal}
+            />
           </Col>
         </Row>
         {/*<Button2 onClick={sleepCalculate}>sss</Button2>*/}
       </TransparentLayer>
       <CalcSleep isModalOpen={calcSleepModal} setModal={setCalcSleepModal} />
+      <CalcFlight isModalOpen={calcFlightModal} setModal={setCalcFlightModal} />
     </div>
   );
 }
