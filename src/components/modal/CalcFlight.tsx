@@ -38,7 +38,7 @@ export default function CalcFlight({
     setLoadFlightList(true);
 
     const result = await axios.post<FlightList[]>(
-      `${siteConfig.apiScheme}/scrap/skyscanner/flightList`,
+      `${siteConfig.apiScheme}/scrap/trip/flightList`,
       journeyInfo
     );
 
