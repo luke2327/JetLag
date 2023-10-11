@@ -30,30 +30,58 @@ function FlightCard({ data }: { data: FlightList }) {
 
     return moment.utc(duration.asMilliseconds()).format('HH시간mm분');
   };
+  const setDurationFormat2 = (t: number) => {
+    const hour = parseInt((t / 60).toString());
+    const minute = parseInt((t % 60).toString());
+
+    return `${hour}h ${minute}m`;
+  };
 
   return (
     <div className='flight-card cursor-pointer rounded-md p-2'>
-      <div>TagList</div>
+      <div className='flex items-center gap-2'>
+        <Image
+          src={`https://pic.tripcdn.com/airline_logo/3x/${data.flightInfo.airlineCode.toLowerCase()}.webp`}
+          alt='airline image'
+          width={24}
+          height={24}
+          className='visible rounded-sm'
+        />
+        <Text>{data.flightInfo.flightNo}</Text>
+      </div>
       <Row gutter={[8, 8]} className='flex items-center'>
         <Col xs={24} sm={20}>
           <Row gutter={[4, 4]} className='flex items-center'>
-            <Col xs={8}>{setTimeFormat(data.departDateTime)}</Col>
+            <Col xs={4}>{setTimeFormat(data.departDateTime)}</Col>
             <Col
-              xs={8}
+              xs={16}
               className='!flex !flex-col !items-center !whitespace-nowrap'
             >
-              <Image
-                width={32}
-                height={6}
-                alt='flight arrow'
-                src='/images/arrow-flight.png'
-                className='visible'
-              />
               <Col xs={24} sm={8} className='!flex !justify-center'>
-                {setDurationFormat(data.duration)}
+                {setDurationFormat2(data.duration)}
+              </Col>
+              <div
+                className='flex h-[1.5px] w-full items-center justify-between'
+                style={{ backgroundColor: '#d9d9d9' }}
+              >
+                <div
+                  className='h-[8px] w-[8px]'
+                  style={{ backgroundColor: '#dadfe6' }}
+                ></div>
+                <div
+                  className='h-[8px] w-[8px] bg-white'
+                  style={{ border: '2px solid #dadfe6' }}
+                ></div>
+                <div
+                  className='h-[8px] w-[8px] bg-white'
+                  style={{ backgroundColor: '#dadfe6' }}
+                ></div>
+              </div>
+              <Col xs={24} sm={8} className='!flex !justify-center'>
+                Direct
               </Col>
             </Col>
-            <Col xs={8} className='!flex !justify-end'>
+            <Col xs={4} className='!flex !justify-end'>
               {setTimeFormat(data.arriveDateTime)}
             </Col>
           </Row>
@@ -61,15 +89,21 @@ function FlightCard({ data }: { data: FlightList }) {
             <Col xs={12}>
               <Row>
                 <Col>{data.departPoint.cityName}</Col>
-                <Col>({data.departPoint.cityCode})</Col>
-                <Col>&nbsp;-&nbsp;{data.departPoint.airportCode}</Col>
+                <Col>({data.departPoint.airportCode})</Col>
+                <Col>
+                  &nbsp;-&nbsp;
+                  {data.departPoint.terminal}
+                </Col>
               </Row>
             </Col>
             <Col xs={12} className='!flex !justify-end'>
               <Row>
                 <Col>{data.arrivePoint.cityName}</Col>
-                <Col>({data.arrivePoint.cityCode})</Col>
-                <Col>&nbsp;-&nbsp;{data.arrivePoint.airportCode}</Col>
+                <Col>({data.arrivePoint.airportCode})</Col>
+                <Col>
+                  &nbsp;-&nbsp;
+                  {data.arrivePoint.terminal}
+                </Col>
               </Row>
             </Col>
           </Row>
