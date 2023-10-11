@@ -5,5 +5,8 @@ export const siteConfig = {
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://tsnext-tw.thcl.dev',
   lucideStrokeWidth: 1.5,
-  apiScheme: 'http://localhost:8484/api',
+  apiScheme:
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8484/api'
+      : 'https://api.maplew.com/api',
 };
