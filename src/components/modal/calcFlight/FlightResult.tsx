@@ -10,19 +10,30 @@ const { Text } = Typography;
 
 type IFlightResult = {
   list: FlightList[];
+  flightInfoOnChange: (flightInfo: FlightList) => void;
 };
 
 export default function FlightResult(props: IFlightResult) {
   return (
     <div className='flex max-h-[400px] w-full flex-col gap-1 overflow-scroll overflow-x-hidden'>
       {props.list.map((flightData, idx) => (
-        <FlightCard key={idx} data={flightData} />
+        <FlightCard
+          key={idx}
+          data={flightData}
+          onClick={props.flightInfoOnChange}
+        />
       ))}
     </div>
   );
 }
 
-function FlightCard({ data }: { data: FlightList }) {
+function FlightCard({
+  data,
+  onClick,
+}: {
+  data: FlightList;
+  onClick: (flightInfo: FlightList) => void;
+}) {
   const setTimeFormat = (t: Date) =>
     (t.toString().split(' ').pop() as string).replace(':00', '');
   const setDurationFormat = (t: number) => {
@@ -38,7 +49,10 @@ function FlightCard({ data }: { data: FlightList }) {
   };
 
   return (
-    <div className='flight-card cursor-pointer rounded-md p-2'>
+    <div
+      className='flight-card cursor-pointer rounded-md p-2'
+      onClick={() => onClick(data)}
+    >
       <div className='flex items-center gap-2'>
         <Image
           src={`https://pic.tripcdn.com/airline_logo/3x/${data.flightInfo.airlineCode.toLowerCase()}.webp`}
