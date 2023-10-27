@@ -202,3 +202,14 @@ section {
   background-color: rgb(240, 242, 245);
   transition: all .2s;
 }
+
+:where(.css-dev-only-do-not-override-1vr7spz).ant-btn-primary {
+  color: #fff;
+  background-color: #1677ff;
+  box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+}
+
+.ant-input-disabled {
+  color: #4a4a4a !important;
+  background-color: rgb(227,227,227) !important;
+}
