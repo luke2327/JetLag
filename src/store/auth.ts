@@ -1,3 +1,4 @@
+import { Dayjs } from 'dayjs';
 import { atom } from 'recoil';
 
 export interface Auth {
@@ -6,9 +7,9 @@ export interface Auth {
     email: string | null;
     age: number | null;
     phone: string | null;
-    birthday: string | null;
-    sleepTime: string | null;
-    wakeupTime: string | null;
+    birthday: string | Dayjs | null;
+    sleepTime: string | Dayjs | null;
+    wakeupTime: string | Dayjs | null;
   };
 }
 
@@ -18,9 +19,9 @@ export interface CompactAuth {
     email: string;
     age: number;
     phone: string;
-    birthday: string;
-    sleepTime: string;
-    wakeupTime: string;
+    birthday: string | Dayjs;
+    sleepTime: string | Dayjs;
+    wakeupTime: string | Dayjs;
   };
 }
 
