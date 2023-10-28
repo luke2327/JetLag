@@ -1,17 +1,19 @@
 'use client';
 
 import { Button, Form, Input, Typography } from 'antd';
-import axios from 'axios';
 import { setCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
+import { toDayJs } from '@/lib/helper';
+import useAxios from '@/hooks/axios';
+
 import TransparentLayer from '@/components/TransparentLayer';
 
-import { Auth, authState } from '@/store/auth';
+import { authState } from '@/store/auth';
 
-import { siteConfig } from '@/constant/config';
+import { Credential } from '@/interface/auth';
 
 const { Text, Title } = Typography;
 
@@ -21,14 +23,9 @@ type FieldType = {
   remember?: string;
 };
 
-type Credential = {
-  user: Auth['user'];
-  authorization: string;
-  success: boolean;
-};
-
 export default function LoginPage() {
   const route = useRouter();
+  const { POST } = useAxios();
   const [blockingLoading, setBlockLoading] = useState(true);
   const [isLoginDone, setIsLoginDone] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
@@ -46,14 +43,20 @@ export default function LoginPage() {
   const onFinish = async (values: any) => {
     setLoginLoading(true);
 
-    const result = await axios
-      .post<Credential>(`${siteConfig.apiScheme}/auth/login`, values)
-      .then((response) => response.data);
+    await POST<Credential>('/auth/login', values).then((res) => {
+      if (res) {
+        const dayJsInstance = toDayJs(res.user);
 
-    setCookie('Authorization', result.authorization);
-    setLoginLoading(false);
-    setIsLoginDone(true);
-    setAuth({ ...auth, user: result.user, status: 'login' });
+        setCookie('Authorization', res.authorization);
+        setLoginLoading(false);
+        setIsLoginDone(true);
+        setAuth({
+          ...auth,
+          user: { ...res.user, ...dayJsInstance },
+          status: 'login',
+        });
+      }
+    });
 
     await new Promise<void>((resolve) => setTimeout(() => resolve(), 1500));
 
@@ -65,7 +68,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className='layout relative flex w-full justify-center sm:pt-4'>
+    <main className='layout relative flex w-full justify-center p-2 sm:p-0 sm:pt-4'>
       {!blockingLoading && (
         <TransparentLayer className='flex w-full max-w-[600px] flex-col justify-center'>
           <Title level={3} className='!mb-0 text-center !text-white'>
@@ -80,48 +83,48 @@ export default function LoginPage() {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete='off'
-            className='!w-full rounded-md !pr-10 !pt-10'
+            className='!flex !w-full !flex-col rounded-md !pr-10 !pt-10'
           >
-            <Form.Item<FieldType>
-              label='Email'
-              name='email'
-              rules={[
-                { required: true, message: 'Please input your username!' },
-              ]}
-            >
-              <Input />
-            </Form.Item>
+            <div>
+              <Form.Item<FieldType>
+                label='Email'
+                name='email'
+                rules={[
+                  { required: true, message: 'Please input your username!' },
+                ]}
+              >
+                <Input />
+              </Form.Item>
 
-            <Form.Item<FieldType>
-              className='text-white'
-              label='Password'
-              name='password'
-              rules={[
-                { required: true, message: 'Please input your password!' },
-              ]}
-            >
-              <Input.Password />
-            </Form.Item>
+              <Form.Item<FieldType>
+                className='text-white'
+                label='Password'
+                name='password'
+                rules={[
+                  { required: true, message: 'Please input your password!' },
+                ]}
+              >
+                <Input.Password />
+              </Form.Item>
+            </div>
 
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-              <div className='flex items-center'>
-                <Button
-                  loading={loginLoading}
-                  type='primary'
-                  htmlType='submit'
-                  style={{
-                    color: 'var(--textbrown)',
-                    backgroundColor: 'rgb(255, 253, 243)',
-                  }}
-                  className='whitespace-nowrap rounded-md'
-                >
-                  Login
-                </Button>
-                {isLoginDone && (
-                  <Text className='pl-2 !text-white'>Login was successful</Text>
-                )}
-              </div>
-            </Form.Item>
+            <div className='flex items-center justify-end'>
+              <Button
+                loading={loginLoading}
+                type='primary'
+                htmlType='submit'
+                style={{
+                  color: 'var(--textbrown)',
+                  backgroundColor: 'rgb(255, 253, 243)',
+                }}
+                className='whitespace-nowrap rounded-md'
+              >
+                Login
+              </Button>
+              {isLoginDone && (
+                <Text className='pl-2 !text-white'>Login was successful</Text>
+              )}
+            </div>
           </Form>
         </TransparentLayer>
       )}
