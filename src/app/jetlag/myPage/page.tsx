@@ -63,7 +63,9 @@ export default function MyPage() {
     setAuth({ ...auth });
   };
 
-  const onFinishFailed = () => {};
+  const onFinishFailed = () => {
+    console.log('this works!');
+  };
 
   useEffect(() => {
     if ((auth.status as Auth['status']) === 'none') {
