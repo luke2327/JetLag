@@ -42,21 +42,27 @@ export default function MyPage() {
       const month = birthday.$M + 1;
       const year = birthday.$y;
 
-      params.birthday = `${year}-${month}-${day}`;
+      params.birthday = `${year}-${month < 10 ? '0' : ''}${month}-${
+        day < 10 ? '0' : ''
+      }${day}`;
     }
     if (values.sleepTime) {
       const sleepTime = values.sleepTime as any;
       const hour = sleepTime.$H;
       const minute = sleepTime.$m;
 
-      params.sleepTime = `${hour}:${minute}`;
+      params.sleepTime = `${hour < 10 ? '0' : ''}${hour}:${
+        minute < 10 ? '0' : ''
+      }${minute}`;
     }
     if (values.wakeupTime) {
       const wakeupTime = values.wakeupTime as any;
       const hour = wakeupTime.$H;
       const minute = wakeupTime.$m;
 
-      params.wakeupTime = `${hour}:${minute}`;
+      params.wakeupTime = `${hour < 10 ? '0' : ''}${hour}:${
+        minute < 10 ? '0' : ''
+      }${minute}`;
     }
 
     await POST<{ success: boolean }>('/auth/updateUser', params, {
@@ -77,7 +83,7 @@ export default function MyPage() {
 
   useEffect(() => {
     if ((auth.status as Auth['status']) === 'none') {
-      route.push('/jetlag');
+      route.push('/jetlag/login');
     } else {
       setBlockLoading(false);
     }
@@ -118,7 +124,7 @@ export default function MyPage() {
                   <Input maxLength={20} />
                 </Form.Item>
                 <Form.Item<Auth['user']> label='Birthday' name='birthday'>
-                  <DatePicker placeholder='Birthday' format='YYYY-mm-DD' />
+                  <DatePicker placeholder='Birthday' format='YYYY-MM-DD' />
                 </Form.Item>
                 <Form.Item<Auth['user']> label='SleepTime' name='sleepTime'>
                   <TimePicker

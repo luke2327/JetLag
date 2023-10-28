@@ -6,6 +6,7 @@ import React from 'react';
 
 import customerInfos from '@/lib/customerInfos';
 
+import EaseOut from '@/components/motion/EaseOut';
 import TransparentLayer from '@/components/TransparentLayer';
 
 const items: CollapseProps['items'] = customerInfos.map((x) => ({
@@ -28,19 +29,21 @@ export default function CustomerPage() {
       id='customer'
       className='layout relative flex w-full justify-center p-4'
     >
-      <TransparentLayer className='flex w-full max-w-[1200px] flex-col justify-center'>
-        <Title level={3} className='!mb-0 text-center !text-white'>
-          Customer Center
-        </Title>
-        <Collapse
-          rootClassName='p-2'
-          accordion={true}
-          defaultActiveKey={['1']}
-          ghost
-          items={items}
-          style={{ color: 'var(--ivory)' }}
-        />
-      </TransparentLayer>
+      <EaseOut className='flex w-full max-w-[1200px] flex-col justify-center'>
+        <TransparentLayer>
+          <Title level={3} className='!mb-0 text-center !text-white'>
+            Customer Center
+          </Title>
+          <Collapse
+            rootClassName='p-2'
+            accordion={true}
+            defaultActiveKey={['1']}
+            ghost
+            items={items}
+            style={{ color: 'var(--ivory)' }}
+          />
+        </TransparentLayer>
+      </EaseOut>
     </main>
   );
 }

@@ -26,7 +26,7 @@ export default function ShoppingPage() {
           <Title level={3} className='!mb-0 text-center !text-white'>
             Shopping
           </Title>
-          <div className='mt-6 flex items-center gap-6'>
+          <div className='mt-6 flex flex-wrap items-center gap-6'>
             {shoppingItemInfos.map((x, idx) => (
               <ShoppingCard key={idx} {...x} />
             ))}
