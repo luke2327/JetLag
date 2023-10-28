@@ -24,7 +24,7 @@ export function toDayJs(user: Auth['user']) {
   } = {};
 
   if (user.birthday) {
-    returnData.birthday = dayjs(user.birthday, 'YYYY-mm-DD');
+    returnData.birthday = dayjs(user.birthday, 'YYYY-MM-DD');
   }
   if (user.sleepTime) {
     returnData.sleepTime = dayjs(user.sleepTime, 'HH:mm');
