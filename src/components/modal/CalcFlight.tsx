@@ -2,12 +2,12 @@
 
 import type { DatePickerProps } from 'antd';
 import { Button, Col, Collapse, DatePicker, Divider, Modal, Row } from 'antd';
-import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MoveRight } from 'lucide-react';
 import { useState } from 'react';
 
 import { DestinationInfo } from '@/lib/cityMatching';
+import useAxios from '@/hooks/axios';
 
 import Spinner from '@/components/core/Spin';
 import FlightRecommend from '@/components/modal/calcFlight/FlightRecommend';
@@ -27,6 +27,7 @@ export default function CalcFlight({
   isModalOpen: boolean;
   setModal: (x: boolean) => void;
 }) {
+  const { POST } = useAxios();
   const [collapseKey, setCollapseKey] = useState(1);
   const [journeyInfo, setJourneyInfo] = useState<JourneyInfo>(
     {} as JourneyInfo
@@ -37,14 +38,13 @@ export default function CalcFlight({
   const getFlightList = async () => {
     setLoadFlightList(true);
 
-    const result = await axios.post<FlightList[]>(
-      `${siteConfig.apiScheme}/scrap/trip/flightList`,
-      journeyInfo
-    );
+    const res = await POST<FlightList[]>('/scrap/trip/flightList', journeyInfo);
 
-    setFlightList(result.data);
-    setLoadFlightList(false);
-    setCollapseKey(2);
+    if (res) {
+      setFlightList(res);
+      setLoadFlightList(false);
+      setCollapseKey(2);
+    }
   };
 
   const journeyOnChange = (

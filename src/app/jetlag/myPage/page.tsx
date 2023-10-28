@@ -1,9 +1,19 @@
 'use client';
 
-import { Button, DatePicker, Form, Input, Typography } from 'antd';
+import {
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  TimePicker,
+  Typography,
+} from 'antd';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { SetterOrUpdater, useRecoilState } from 'recoil';
+
+import useAxios from '@/hooks/axios';
 
 import TransparentLayer from '@/components/TransparentLayer';
 
@@ -13,15 +23,47 @@ const { Title } = Typography;
 
 export default function MyPage() {
   const route = useRouter();
+  const { POST } = useAxios();
   const [blockingLoading, setBlockLoading] = useState(true);
   const [auth, setAuth] = useRecoilState(authState) as [
     CompactAuth,
     SetterOrUpdater<Auth>
   ];
 
-  const onFinish = (values: any) => {
-    console.log(values);
+  const onFinish = async (values: Partial<CompactAuth['user']>) => {
+    const params = { ...values };
+
+    if (values.birthday) {
+      const birthday = values.birthday as any;
+      const day = birthday.$D;
+      const month = birthday.$M + 1;
+      const year = birthday.$y;
+
+      params.birthday = `${year}-${month}-${day}`;
+    }
+    if (values.sleepTime) {
+      const sleepTime = values.sleepTime as any;
+      const hour = sleepTime.$H;
+      const minute = sleepTime.$m;
+
+      params.sleepTime = `${hour}:${minute}`;
+    }
+    if (values.wakeupTime) {
+      const wakeupTime = values.wakeupTime as any;
+      const hour = wakeupTime.$H;
+      const minute = wakeupTime.$m;
+
+      params.wakeupTime = `${hour}:${minute}`;
+    }
+
+    await POST<{ success: boolean }>('/auth/updateUser', params, {
+      withCredentials: true,
+    });
+
+    setAuth({ ...auth });
   };
+
+  const onFinishFailed = () => {};
 
   useEffect(() => {
     if ((auth.status as Auth['status']) === 'none') {
@@ -31,11 +73,11 @@ export default function MyPage() {
     }
   }, []);
 
-  const onFinishFailed = () => {};
-
-  console.log(auth.user, auth);
   return (
-    <main className='layout relative flex w-full justify-center sm:pt-4'>
+    <main
+      id='myPage'
+      className='layout relative flex w-full justify-center p-2 sm:p-0 sm:pt-4'
+    >
       {!blockingLoading && (
         <TransparentLayer className='flex w-full max-w-[600px] flex-col justify-center'>
           <Title level={3} className='!mb-0 text-center !text-white'>
@@ -43,33 +85,46 @@ export default function MyPage() {
           </Title>
           <Form
             name='myPage'
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
+            labelCol={{ span: 6 }}
+            wrapperCol={{ span: 14 }}
             style={{ maxWidth: 600 }}
             initialValues={auth.user}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete='off'
-            className='!flex !w-full !flex-col rounded-md !pr-10 !pt-10'
+            className='!sm:pr-10 !flex !w-full !flex-col rounded-md !pt-10'
+            colon={false}
           >
             <div>
               <Form.Item<Auth['user']> label='Email' name='email'>
                 <Input disabled={true} />
               </Form.Item>
               <Form.Item<Auth['user']> label='Age' name='age'>
-                <Input />
+                <InputNumber maxLength={3} />
               </Form.Item>
               <Form.Item<Auth['user']> label='Phone' name='phone'>
-                <Input />
+                <Input maxLength={20} />
               </Form.Item>
               <Form.Item<Auth['user']> label='Birthday' name='birthday'>
-                <DatePicker />
+                <DatePicker placeholder='Birthday' format='YYYY-mm-DD' />
               </Form.Item>
               <Form.Item<Auth['user']> label='SleepTime' name='sleepTime'>
-                <Input />
+                <TimePicker
+                  showNow={false}
+                  minuteStep={30}
+                  showSecond={false}
+                  placeholder='Sleep time'
+                  format='HH:mm'
+                />
               </Form.Item>
               <Form.Item<Auth['user']> label='WakeupTime' name='wakeupTime'>
-                <Input />
+                <TimePicker
+                  showNow={false}
+                  minuteStep={30}
+                  showSecond={false}
+                  placeholder='Wakeup time'
+                  format='HH:mm'
+                />
               </Form.Item>
             </div>
             <div className='flex justify-end'>
