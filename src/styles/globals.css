@@ -213,3 +213,17 @@ section {
 #myPage .ant-input-number, #myPage .ant-picker {
   width: 100% !important;
 }
+
+#customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse>.ant-collapse-item >.ant-collapse-header {
+  font-weight: bold;
+}
+
+#customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse>.ant-collapse-item >.ant-collapse-header,
+#customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse .ant-collapse-content {
+  color: var(--ivory);
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  background-color: #d0c79b;
+  background-image: unset;
+}

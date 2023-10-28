@@ -46,7 +46,7 @@ export default function Header() {
           </Link>
         </li>
         <li>
-          <Link className='linear-ivory-text' href='/jetlag'>
+          <Link className='linear-ivory-text' href='/jetlag/customer'>
             Customer Center
           </Link>
         </li>
