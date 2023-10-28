@@ -173,10 +173,6 @@ section {
   transition: all .15s;
 }
 
-.ivory button:hover {
-  color: var(--ivory) !important;
-}
-
 .ant-input {
   padding: 4px 11px;
   box-sizing: border-box;
@@ -212,4 +208,8 @@ section {
 .ant-input-disabled {
   color: #4a4a4a !important;
   background-color: rgb(227,227,227) !important;
+}
+
+#myPage .ant-input-number, #myPage .ant-picker {
+  width: 100% !important;
 }

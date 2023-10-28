@@ -1,10 +1,9 @@
 'use client';
 
-import { Col, Row } from 'antd';
+import { Button, Col, Row } from 'antd';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-import Button from '@/components/buttons/Button';
 import CalcFlight from '@/components/modal/CalcFlight';
 import CalcSleep from '@/components/modal/CalcSleep';
 import EaseOut from '@/components/motion/EaseOut';
@@ -75,9 +74,11 @@ function AccentButton({
       }}
     >
       <Button
-        variant='primary'
-        style={{ color: 'var(--textbrown)' }}
-        className='whitespace-nowrap rounded-xl'
+        style={{
+          color: 'var(--textbrown)',
+          backgroundColor: 'rgb(255, 253, 243)',
+        }}
+        className='whitespace-nowrap rounded-md'
         onClick={() => onClickFn && onClickFn(true)}
       >
         {title}
