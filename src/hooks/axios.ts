@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import axios from 'axios';
 import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
@@ -8,6 +9,7 @@ import { authState } from '@/store/auth';
 import { siteConfig } from '@/constant/config';
 
 export default function useAxios() {
+  const [messageApi] = message.useMessage();
   const setAuth = useSetRecoilState(authState);
   const route = useRouter();
   const instance = axios.create({
@@ -23,6 +25,11 @@ export default function useAxios() {
       .post<T>(...rest)
       .then((res) => res.data)
       .catch((e) => {
+        messageApi.open({
+          type: 'error',
+          content: 'Login session was expired.',
+        });
+
         deleteCookie('Authorization');
         deleteCookie('session-cookie');
         setAuth({

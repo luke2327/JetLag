@@ -2,6 +2,7 @@
 
 // default page
 
+import { message } from 'antd';
 import { useEffect, useState } from 'react';
 import * as React from 'react';
 import { useRecoilState } from 'recoil';
@@ -15,6 +16,7 @@ import { Credential } from '@/interface/auth';
 
 export default function AppLayout({ children }: React.PropsWithChildren) {
   const { POST } = useAxios();
+  const [, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useRecoilState(authState);
 
@@ -41,6 +43,9 @@ export default function AppLayout({ children }: React.PropsWithChildren) {
   return loading ? (
     <div></div>
   ) : (
-    <section className='ivory'>{children}</section>
+    <section className='ivory'>
+      {contextHolder}
+      {children}
+    </section>
   );
 }
