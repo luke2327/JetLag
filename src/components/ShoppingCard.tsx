@@ -25,7 +25,15 @@ export default function ShoppingCard({
       <Card
         hoverable
         style={{ width: 240 }}
-        cover={<Image width={240} height={240} alt={alt} src={src} />}
+        cover={
+          <Image
+            style={{ filter: 'grayscale(.6)' }}
+            width={240}
+            height={240}
+            alt={alt}
+            src={src}
+          />
+        }
         bodyStyle={{ padding: 12 }}
       >
         <Meta title={title} description={description} />

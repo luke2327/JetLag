@@ -231,3 +231,18 @@ button, [type='button'], [type='reset'], [type='submit'] {
 img {
   visibility: visible !important;
 }
+
+.ant-result {
+  padding: 8px !important;
+}
+
+.ant-result-title {
+  color: var(--ivory) !important;
+}
+
+.ant-result-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 !important;
+}

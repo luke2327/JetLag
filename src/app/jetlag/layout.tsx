@@ -3,41 +3,54 @@
 // default page
 
 import { message } from 'antd';
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import * as React from 'react';
 import { useRecoilState } from 'recoil';
 
 import { toDayJs } from '@/lib/helper';
-import useAxios from '@/hooks/axios';
+import useAxios, { NetworkError } from '@/hooks/axios';
 
 import { authState } from '@/store/auth';
 
 import { Credential } from '@/interface/auth';
 
 export default function AppLayout({ children }: React.PropsWithChildren) {
+  const route = useRouter();
   const { POST } = useAxios();
-  const [, contextHolder] = message.useMessage();
+  const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useRecoilState(authState);
 
   const getUserInfo = async () => {
     const payload = ['/auth/userInfo', {}, { withCredentials: true }] as const;
-    await POST<Credential>(...payload).then((res) => {
-      if (res && res.success) {
-        const dayJsInstance = toDayJs(res.user);
+    const res = await POST<Credential>(...payload);
 
-        setAuth({
-          ...auth,
-          status: 'login',
-          user: { ...res.user, ...dayJsInstance },
-        });
-      }
-    });
+    if (res.success) {
+      const dayJsInstance = toDayJs((res as Credential).user);
 
-    setLoading(false);
+      setLoading(false);
+      setAuth({
+        ...auth,
+        status: 'login',
+        user: { ...(res as Credential).user, ...dayJsInstance },
+      });
+    } else {
+      messageApi.open({
+        type: 'error',
+        content: (res as NetworkError).message || 'Login session was expired.',
+      });
+
+      route.push('/jetlag');
+    }
   };
   useEffect(() => {
-    getUserInfo();
+    if (getCookie('Authorization')) {
+      getUserInfo();
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   return loading ? (

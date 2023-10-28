@@ -2,6 +2,8 @@
 
 import type { DatePickerProps } from 'antd';
 import { Button, Col, Collapse, DatePicker, Divider, Modal, Row } from 'antd';
+import { RangePickerProps } from 'antd/es/date-picker';
+import dayjs from 'dayjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MoveRight } from 'lucide-react';
 import { useState } from 'react';
@@ -41,7 +43,7 @@ export default function CalcFlight({
     const res = await POST<FlightList[]>('/scrap/trip/flightList', journeyInfo);
 
     if (res) {
-      setFlightList(res);
+      setFlightList(res as FlightList[]);
       setLoadFlightList(false);
       setCollapseKey(2);
     }
@@ -73,6 +75,11 @@ export default function CalcFlight({
     setCollapseKey(Number(Array.isArray(key) ? key.pop() : key));
   };
 
+  const disabledDate: RangePickerProps['disabledDate'] = (current) => {
+    // Can not select days before today and today
+    return current && current < dayjs().subtract(1, 'd').endOf('day');
+  };
+
   return (
     <Modal
       title='즐거운 여행을 위한 시차 수면 계산'
@@ -93,7 +100,10 @@ export default function CalcFlight({
           <div className='flex flex-col items-start justify-center gap-2'>
             <Row gutter={[8, 8]} className='flex items-center'>
               <Col xs={24} sm={6}>
-                <DatePicker onChange={dateOnChange} />
+                <DatePicker
+                  disabledDate={disabledDate}
+                  onChange={dateOnChange}
+                />
               </Col>
               <Col xs={24} sm={7}>
                 <CountryAutocomplete
