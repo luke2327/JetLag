@@ -25,9 +25,16 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
         <body className={inter.className}>
           <ConfigProvider
             theme={{
+              token: {
+                colorPrimary: '#d0c79b',
+              },
               components: {
                 Form: {
                   labelColor: 'rgba(255,255,255,1)',
+                },
+                Collapse: {
+                  contentPadding: '4px !important',
+                  headerPadding: '4px',
                 },
               },
             }}

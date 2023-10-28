@@ -227,3 +227,7 @@ button, [type='button'], [type='reset'], [type='submit'] {
   background-color: #d0c79b;
   background-image: unset;
 }
+
+img {
+  visibility: visible !important;
+}
