@@ -15,11 +15,11 @@ export default function HomePage() {
   const [calcFlightModal, setCalcFlightModal] = useState<boolean>(false);
 
   return (
-    <div className='layout relative text-center sm:pt-4'>
+    <main className='layout relative flex w-full flex-col items-center justify-center text-center sm:pt-4'>
       <EaseOut>
         <Title title='Jet Lag Service' />
       </EaseOut>
-      <TransparentLayer className='flex justify-center gap-2'>
+      <TransparentLayer className='flex w-[600px] justify-center gap-2'>
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={8}>
             <AccentButton delay={0.5} title='수면시간 추천' />
@@ -43,7 +43,7 @@ export default function HomePage() {
       </TransparentLayer>
       <CalcSleep isModalOpen={calcSleepModal} setModal={setCalcSleepModal} />
       <CalcFlight isModalOpen={calcFlightModal} setModal={setCalcFlightModal} />
-    </div>
+    </main>
   );
 }
 
