@@ -92,7 +92,7 @@ function FlightCard({
                 ></div>
               </div>
               <Col xs={24} sm={8} className='!flex !justify-center'>
-                Direct
+                {/*Direct*/}
               </Col>
             </Col>
             <Col xs={4} className='!flex !justify-end'>
@@ -104,20 +104,24 @@ function FlightCard({
               <Row>
                 <Col>{data.departPoint.cityName}</Col>
                 <Col>({data.departPoint.airportCode})</Col>
-                <Col>
-                  &nbsp;-&nbsp;
-                  {data.departPoint.terminal}
-                </Col>
+                {data.departPoint.terminal ? (
+                  <Col>
+                    &nbsp;-&nbsp;
+                    {data.departPoint.terminal}
+                  </Col>
+                ) : null}
               </Row>
             </Col>
             <Col xs={12} className='!flex !justify-end'>
               <Row>
                 <Col>{data.arrivePoint.cityName}</Col>
                 <Col>({data.arrivePoint.airportCode})</Col>
-                <Col>
-                  &nbsp;-&nbsp;
-                  {data.arrivePoint.terminal}
-                </Col>
+                {data.arrivePoint.terminal ? (
+                  <Col>
+                    &nbsp;-&nbsp;
+                    {data.arrivePoint.terminal}
+                  </Col>
+                ) : null}
               </Row>
             </Col>
           </Row>
