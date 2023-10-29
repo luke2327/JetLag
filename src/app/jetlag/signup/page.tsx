@@ -32,8 +32,6 @@ export default function SignupPage() {
 
     const res = await POST<Credential>('/auth/signup', values);
 
-    console.log(res);
-
     if (res.success) {
       setLevel(2);
     } else {
@@ -51,7 +49,7 @@ export default function SignupPage() {
   };
 
   return (
-    <main className='layout relative flex w-full justify-center p-2 sm:p-0 sm:pt-4'>
+    <main className='layout relative flex w-full justify-center p-2 sm:pt-4'>
       {contextHolder}
       <EaseOut className='flex w-full max-w-[400px] flex-col justify-center'>
         <TransparentLayer>
@@ -140,6 +138,7 @@ export default function SignupPage() {
                   style={{
                     color: 'var(--textbrown)',
                     backgroundColor: 'rgb(255, 253, 243)',
+                    border: '1px solid #c0c0c0',
                   }}
                   className='w-full whitespace-nowrap rounded-md'
                   onClick={() => {

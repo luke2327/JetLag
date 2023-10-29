@@ -15,19 +15,22 @@ export default function HomePage() {
   const [calcFlightModal, setCalcFlightModal] = useState<boolean>(false);
 
   return (
-    <main className='layout relative flex w-full flex-col items-center justify-center text-center sm:pt-4'>
+    <main
+      id='service'
+      className='layout relative flex w-full flex-col items-center justify-center p-2 text-center'
+    >
       <EaseOut>
         <Title title='Jet Lag Service' />
       </EaseOut>
-      <TransparentLayer className='flex w-[600px] justify-center gap-2'>
-        <Row gutter={[16, 16]}>
+      <TransparentLayer className='flex w-full max-w-[600px] justify-center gap-2'>
+        <Row gutter={[16, 16]} className='w-[90%]'>
           <Col xs={24} sm={8}>
-            <AccentButton delay={0.5} title='수면시간 추천' />
+            <AccentButton delay={0.5} title='Recommand sleep' />
           </Col>
           <Col xs={24} sm={8}>
             <AccentButton
               delay={0.8}
-              title='수면시간 계산기'
+              title='Sleep calc'
               onClickFn={setCalcSleepModal}
             />
           </Col>
@@ -77,8 +80,9 @@ function AccentButton({
         style={{
           color: 'var(--textbrown)',
           backgroundColor: 'rgb(255, 253, 243)',
+          border: '1px solid #c0c0c0',
         }}
-        className='whitespace-nowrap rounded-md'
+        className='w-full whitespace-nowrap rounded-md'
         onClick={() => onClickFn && onClickFn(true)}
       >
         {title}

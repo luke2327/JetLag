@@ -13,7 +13,7 @@ import useAxios, { NetworkError } from '@/hooks/axios';
 import EaseOut from '@/components/motion/EaseOut';
 import TransparentLayer from '@/components/TransparentLayer';
 
-import { authState } from '@/store/auth';
+import { Auth, authState } from '@/store/auth';
 
 import { Credential } from '@/interface/auth';
 
@@ -49,6 +49,10 @@ export default function LoginPage() {
 
     if (res.success) {
       const dayJsInstance = toDayJs((res as Credential).user);
+      const user: Auth['user'] = {
+        ...(res as Credential).user,
+        ...dayJsInstance,
+      };
 
       setCookie('Authorization', (res as Credential).authorization);
       setLoginLoading(false);
@@ -60,7 +64,7 @@ export default function LoginPage() {
 
       messageApi.open({
         type: 'success',
-        content: 'Login success',
+        content: 'Welcome to Jetlag',
       });
 
       await new Promise<void>((resolve) => setTimeout(() => resolve(), 800));
@@ -131,6 +135,7 @@ export default function LoginPage() {
                   style={{
                     color: 'var(--textbrown)',
                     backgroundColor: 'rgb(255, 253, 243)',
+                    border: '1px solid #c0c0c0',
                   }}
                   className='w-full whitespace-nowrap rounded-md'
                 >
