@@ -6,14 +6,17 @@ import type { ReactNode } from 'react';
 export default function EaseOut({
   children,
   delay = 0,
+  className,
 }: {
   children: ReactNode;
   delay?: number;
+  className?: string;
 }) {
   return (
     <LazyMotion features={domAnimation}>
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        className={className}
+        initial={{ opacity: 0, scale: 0.99 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{
           duration: 0.4,
