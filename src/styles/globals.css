@@ -219,8 +219,10 @@ section {
 }
 
 #customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse>.ant-collapse-item >.ant-collapse-header,
-#customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse .ant-collapse-content {
-  color: var(--ivory);
+#customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse .ant-collapse-content,
+#customer .ant-collapse .ant-collapse-content,
+#customer .ant-collapse {
+  color: var(--ivory) !important;
 }
 
 button, [type='button'], [type='reset'], [type='submit'] {
@@ -245,4 +247,34 @@ img {
   justify-content: center;
   align-items: center;
   margin: 0 !important;
+}
+
+#service .ant-input-number-input {
+  text-align: center !important;
+}
+
+h1, h2, h3, h4, h5, h6, strong, span, p, div, legend, fieldset, label, table, th, td, tr, li, ul, ol {
+  text-wrap: balance !important;
+}
+
+[type='text']:focus,
+input:where(:not([type])):focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='datetime-local']:focus,
+[type='month']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='time']:focus,
+[type='week']:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  border-color: #dedbca !important;
+  outline: unset !important;
+  outline-offset: unset !important;
+  box-shadow: unset !important;
 }
