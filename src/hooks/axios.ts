@@ -23,19 +23,24 @@ export default function useAxios() {
       .post<T>(...rest)
       .then((res) => res.data)
       .catch((e) => {
-        deleteCookie('Authorization');
-        deleteCookie('session-cookie');
-        setAuth({
-          status: 'none',
-          user: {
-            email: null,
-            age: null,
-            phone: null,
-            birthday: null,
-            sleepTime: null,
-            wakeupTime: null,
-          },
-        });
+        console.log(e, 'Axios error');
+        if (e.message === 'timeout of 10000ms exceeded') {
+          console.log('타임아웃 에러');
+        } else {
+          deleteCookie('Authorization');
+          deleteCookie('session-cookie');
+          setAuth({
+            status: 'none',
+            user: {
+              email: null,
+              age: null,
+              phone: null,
+              birthday: null,
+              sleepTime: null,
+              wakeupTime: null,
+            },
+          });
+        }
 
         return { success: false, message: e.message } as NetworkError;
       });
