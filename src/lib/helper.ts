@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { Auth } from '@/store/auth';
 
@@ -17,6 +18,8 @@ export function getFromSessionStorage(key: string): string | null {
 }
 
 export function toDayJs(user: Auth['user']) {
+  dayjs.extend(customParseFormat);
+
   const returnData: {
     birthday?: Auth['user']['birthday'];
     sleepTime?: Auth['user']['sleepTime'];
