@@ -171,6 +171,11 @@ export default function CalcSleep({
           <Col xs={24} sm={8}>
             <Button
               type='default'
+              style={{
+                color: 'var(--textbrown)',
+                backgroundColor: 'rgb(255, 253, 243)',
+                border: '1px solid #c0c0c0',
+              }}
               className='xs:w-40 w-full'
               onClick={calculate}
             >
@@ -180,6 +185,11 @@ export default function CalcSleep({
           <Col xs={24} sm={8}>
             <Button
               type='default'
+              style={{
+                color: 'var(--textbrown)',
+                backgroundColor: 'rgb(255, 253, 243)',
+                border: '1px solid #c0c0c0',
+              }}
               className='xs:w-40 w-full'
               onClick={sleepNow}
             >
@@ -189,6 +199,11 @@ export default function CalcSleep({
           <Col xs={24} sm={8}>
             <Button
               type='default'
+              style={{
+                color: 'var(--textbrown)',
+                backgroundColor: 'rgb(255, 253, 243)',
+                border: '1px solid #c0c0c0',
+              }}
               className='xs:w-40 w-full'
               onClick={checkAgain}
             >
