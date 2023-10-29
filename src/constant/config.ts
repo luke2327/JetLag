@@ -8,5 +8,5 @@ export const siteConfig = {
   apiScheme:
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:8484/api'
-      : 'https://api.maplew.com/api',
+      : 'https://jetlag-chlogy.koyeb.app/api',
 };

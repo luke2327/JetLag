@@ -220,6 +220,7 @@ section {
 
 #customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse>.ant-collapse-item >.ant-collapse-header,
 #customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse .ant-collapse-content,
+#customer .ant-collapse-header,
 #customer .ant-collapse .ant-collapse-content,
 #customer .ant-collapse {
   color: var(--ivory) !important;
@@ -277,4 +278,17 @@ select:focus {
   outline: unset !important;
   outline-offset: unset !important;
   box-shadow: unset !important;
+}
+
+@media (max-width: 576px) {
+  header > ul#horizontal-nav {
+    display: none !important;
+  }
+  header > #nav-button {
+    display: block !important;
+  }
+}
+
+#header-drawer a {
+  color: #222;
 }
