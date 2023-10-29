@@ -3,6 +3,7 @@
 import { ConfigProvider } from 'antd';
 import { Inter } from 'next/font/google';
 import * as React from 'react';
+import { Provider } from 'react-wrap-balancer';
 import { RecoilRoot } from 'recoil';
 
 import '@/styles/globals.css';
@@ -42,7 +43,9 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
             <StyledComponentsRegistry>
               <BackgroundClock>
                 <Header />
-                <EaseOut>{children}</EaseOut>
+                <Provider>
+                  <EaseOut>{children}</EaseOut>
+                </Provider>
               </BackgroundClock>
             </StyledComponentsRegistry>
           </ConfigProvider>

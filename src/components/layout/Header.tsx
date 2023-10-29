@@ -1,28 +1,23 @@
 import { deleteCookie } from 'cookies-next';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import { authState } from '@/store/auth';
+import { flightResultState, flightState } from '@/store/flight';
 
 export default function Header() {
-  const setAuth = useSetRecoilState(authState);
   const route = useRouter();
   const auth = useRecoilValue(authState);
+  const resetAuth = useResetRecoilState(authState);
+  const resetFlight = useResetRecoilState(flightState);
+  const resetFlightResult = useResetRecoilState(flightResultState);
   const logout = () => {
     deleteCookie('Authorization');
     deleteCookie('session-cookie');
-    setAuth({
-      status: 'none',
-      user: {
-        email: null,
-        age: null,
-        phone: null,
-        birthday: null,
-        sleepTime: null,
-        wakeupTime: null,
-      },
-    });
+    resetAuth();
+    resetFlight();
+    resetFlightResult();
 
     route.push('/jetlag/login');
   };

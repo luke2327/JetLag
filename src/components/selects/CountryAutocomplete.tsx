@@ -79,20 +79,23 @@ const options = [
 const App = ({
   type,
   setJourney,
+  className,
 }: {
   type: 'depart' | 'arrive';
   setJourney: (type: 'arrive' | 'depart', point: DestinationInfo) => void;
+  className?: string;
 }) => (
   <AutoComplete
     popupClassName='certain-category-search-dropdown'
-    popupMatchSelectWidth={400}
+    // popupMatchSelectWidth={'100%'}
     options={options}
     onChange={(value) =>
       setJourney(type, cityMatching(value) as DestinationInfo)
     }
     size='middle'
+    className={className}
   >
-    <Input.Search size='middle' placeholder='input here' />
+    <Input className='text-center' size='middle' placeholder='input here' />
   </AutoComplete>
 );
 
