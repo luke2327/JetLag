@@ -1,5 +1,5 @@
 import { Dayjs } from 'dayjs';
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
 export interface Auth {
   status: 'login' | 'none';
@@ -37,5 +37,14 @@ export const authState = atom<Auth>({
       sleepTime: null,
       wakeupTime: null,
     },
+  },
+});
+
+export const userState = selector({
+  key: 'authStateSelector',
+  get: ({ get }) => {
+    const auth = get(authState);
+
+    return auth.user;
   },
 });
