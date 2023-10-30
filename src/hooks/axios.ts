@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { deleteCookie } from 'cookies-next';
-import { useSetRecoilState } from 'recoil';
+import { useRouter } from 'next/navigation';
+import { useResetRecoilState } from 'recoil';
 
 import { authState } from '@/store/auth';
 
@@ -9,7 +10,8 @@ import { siteConfig } from '@/constant/config';
 export type NetworkError = { success: false; message: string };
 
 export default function useAxios() {
-  const setAuth = useSetRecoilState(authState);
+  const route = useRouter();
+  const resetAuth = useResetRecoilState(authState);
   const instance = axios.create({
     baseURL: siteConfig.apiScheme,
     timeout: 10000,
@@ -29,17 +31,11 @@ export default function useAxios() {
         } else {
           deleteCookie('Authorization');
           deleteCookie('session-cookie');
-          setAuth({
-            status: 'none',
-            user: {
-              email: null,
-              age: null,
-              phone: null,
-              birthday: null,
-              sleepTime: null,
-              wakeupTime: null,
-            },
-          });
+          resetAuth();
+
+          if (e.message === 'Request failed with status code 401') {
+            route.push('/jetlag/login');
+          }
         }
 
         return { success: false, message: e.message } as NetworkError;
