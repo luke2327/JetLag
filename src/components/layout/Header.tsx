@@ -81,14 +81,24 @@ export default function Header() {
           </li>
         )}
       </ul>
-      <button
-        id='nav-button'
-        onClick={openDrawer}
-        style={{ backgroundColor: 'transparent', display: 'none' }}
-        className='pl-2'
-      >
-        <Menu strokeWidth={siteConfig.lucideStrokeWidth} color='var(--ivory)' />
-      </button>
+      <div id='nav-button' style={{ display: 'none' }}>
+        <button
+          onClick={openDrawer}
+          style={{ backgroundColor: 'transparent' }}
+          className='pl-2'
+        >
+          <Menu
+            strokeWidth={siteConfig.lucideStrokeWidth}
+            color='var(--ivory)'
+          />
+        </button>
+        <div className='linear-ivory-text flex w-full items-center justify-center'>
+          <Link href='/jetlag' className='font-bold tracking-widest'>
+            Jetlag
+          </Link>
+        </div>
+      </div>
+
       <Drawer
         id='header-drawer'
         placement='left'

@@ -285,7 +285,7 @@ select:focus {
     display: none !important;
   }
   header > #nav-button {
-    display: block !important;
+    display: flex !important;
   }
 }
 
