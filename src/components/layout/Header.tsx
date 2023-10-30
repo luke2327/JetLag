@@ -81,7 +81,7 @@ export default function Header() {
           </li>
         )}
       </ul>
-      <div id='nav-button' style={{ display: 'none' }}>
+      <div id='nav-button' style={{ display: 'none' }} className='w-full'>
         <button
           onClick={openDrawer}
           style={{ backgroundColor: 'transparent' }}
