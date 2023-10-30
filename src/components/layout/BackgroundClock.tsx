@@ -9,15 +9,11 @@ export default function BackgroundClock({
 }) {
   return (
     <main
-      className='bg-clock min-h-screen'
-      style={{
-        backgroundImage: `src(${backgroundClock.src})`,
-        width: '100%',
-        height: '100%',
-      }}
+      className='bg-clock h-full min-h-screen w-full bg-cover bg-no-repeat'
+      style={{ backgroundImage: `src(${backgroundClock.src})` }}
     >
       <Head>
-        <title>Hi</title>
+        <title>Jetlag</title>
       </Head>
       {children}
     </main>
