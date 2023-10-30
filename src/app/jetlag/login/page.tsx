@@ -53,6 +53,8 @@ export default function LoginPage() {
       setCookie('Authorization', (res as Credential).authorization, {
         path: '/',
         maxAge: 3600,
+        domain: 'jetlag-chlogy.koyeb.app',
+        sameSite: 'none',
       });
       setLoginLoading(false);
       setAuth({
