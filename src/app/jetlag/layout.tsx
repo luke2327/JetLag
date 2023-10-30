@@ -46,6 +46,7 @@ export default function AppLayout({ children }: React.PropsWithChildren) {
     }
   };
   useEffect(() => {
+    console.log(getCookie('Authorization'));
     if (getCookie('Authorization')) {
       getUserInfo();
     } else {
