@@ -13,7 +13,7 @@ import useAxios, { NetworkError } from '@/hooks/axios';
 import EaseOut from '@/components/motion/EaseOut';
 import TransparentLayer from '@/components/TransparentLayer';
 
-import { Auth, authState } from '@/store/auth';
+import { authState } from '@/store/auth';
 
 import { Credential } from '@/interface/auth';
 
@@ -49,12 +49,11 @@ export default function LoginPage() {
 
     if (res.success) {
       const dayJsInstance = toDayJs((res as Credential).user);
-      const user: Auth['user'] = {
-        ...(res as Credential).user,
-        ...dayJsInstance,
-      };
 
-      setCookie('Authorization', (res as Credential).authorization);
+      setCookie('Authorization', (res as Credential).authorization, {
+        path: '/',
+        maxAge: 3600,
+      });
       setLoginLoading(false);
       setAuth({
         ...auth,
