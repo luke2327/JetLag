@@ -25,6 +25,7 @@ export default function Header() {
     resetFlight();
     resetFlightResult();
     onCloseDrawer();
+    localStorage.removeItem('jl');
 
     route.push('/jetlag/login');
   };
