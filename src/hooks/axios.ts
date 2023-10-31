@@ -29,6 +29,7 @@ export default function useAxios() {
         if (e.message === 'timeout of 10000ms exceeded') {
           console.log('타임아웃 에러');
         } else {
+          localStorage.removeItem('jl');
           deleteCookie('Authorization');
           deleteCookie('session-cookie');
           resetAuth();
