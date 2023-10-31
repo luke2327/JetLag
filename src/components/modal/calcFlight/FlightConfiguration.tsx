@@ -56,19 +56,14 @@ export default function FlightConfiguration({
 }: IFlightRecommend) {
   const { depart, arrive } = journeyInfo;
   const user = useRecoilValue(userState);
+  const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
-  const [manualWake, setManualWake] = useState<string | null>(null);
-  const [manualSleep, setManualSleep] = useState<string | null>(null);
   const [flight, setFlight] = useRecoilState(flightState);
   const setFlightResult = useSetRecoilState(flightResultState);
   const { POST } = useAxios();
   const calculate = async () => {
-    const wake = flight.wake
-      ? (flight.wake as Dayjs).format('HH:mm')
-      : manualWake;
-    const sleep = flight.sleep
-      ? (flight.sleep as Dayjs).format('HH:mm')
-      : manualSleep;
+    setLoading(true);
+
     const params = {
       ...flight,
       wake: (flight.wake as Dayjs).format('HH:mm'),
@@ -100,6 +95,8 @@ export default function FlightConfiguration({
         content: 'No data.',
       });
     }
+
+    setLoading(false);
   };
 
   return (
@@ -198,6 +195,7 @@ export default function FlightConfiguration({
           }}
           onClick={calculate}
           className='w-full whitespace-nowrap rounded-md'
+          loading={loading}
         >
           계산
         </Button>
