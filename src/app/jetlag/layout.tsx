@@ -3,7 +3,6 @@
 // default page
 
 import { message } from 'antd';
-import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import * as React from 'react';
@@ -24,13 +23,21 @@ export default function AppLayout({ children }: React.PropsWithChildren) {
   const [auth, setAuth] = useRecoilState(authState);
 
   const getUserInfo = async () => {
-    const payload = ['/auth/userInfo', {}, { withCredentials: true }] as const;
+    const payload = [
+      '/auth/userInfo',
+      {},
+      {
+        headers: {
+          Authorization: localStorage.getItem('jl'),
+        },
+        withCredentials: true,
+      },
+    ] as const;
     const res = await POST<Credential>(...payload);
 
     if (res.success) {
       const dayJsInstance = toDayJs((res as Credential).user);
 
-      setLoading(false);
       setAuth({
         ...auth,
         status: 'login',
@@ -44,14 +51,11 @@ export default function AppLayout({ children }: React.PropsWithChildren) {
 
       route.push('/jetlag');
     }
+
+    setLoading(false);
   };
   useEffect(() => {
-    try {
-      getUserInfo();
-    } catch (e) {
-      setLoading(false);
-    }
-    if (getCookie('Authorization')) {
+    if (localStorage.getItem('jl')) {
       getUserInfo();
     } else {
       setLoading(false);
@@ -59,7 +63,7 @@ export default function AppLayout({ children }: React.PropsWithChildren) {
   }, []);
 
   return loading ? (
-    <div></div>
+    <div className='linear-ivory-text p-2'>Loading</div>
   ) : (
     <section className='ivory'>
       {contextHolder}
