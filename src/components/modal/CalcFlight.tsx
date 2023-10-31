@@ -151,7 +151,7 @@ export default function CalcFlight({
           activeKey={collapseKey}
           onChange={collapseOnChange}
         >
-          <Collapse.Panel key={1} header='Search flight'>
+          <Collapse.Panel key={1} header='항공권 검색'>
             <div className='flex w-full flex-col items-start justify-center gap-2'>
               <Row gutter={[8, 8]} className='flex w-full items-center'>
                 <Col xs={24} sm={6}>
@@ -159,6 +159,7 @@ export default function CalcFlight({
                     disabledDate={disabledDate}
                     onChange={dateOnChange}
                     className='w-full'
+                    placeholder='출발일'
                   />
                 </Col>
                 <Col xs={24} sm={7}>
@@ -196,7 +197,7 @@ export default function CalcFlight({
                     }}
                     className='w-full whitespace-nowrap rounded-md !p-0'
                   >
-                    Search
+                    검색
                   </Button>
                 </Col>
               </Row>
@@ -204,7 +205,7 @@ export default function CalcFlight({
           </Collapse.Panel>
           <Collapse.Panel
             key={2}
-            header='Search result'
+            header='항공권 리스트'
             disabled={!flightList.length}
           >
             {flightList.length || loadFlightList ? (
@@ -235,7 +236,7 @@ export default function CalcFlight({
           </Collapse.Panel>
           <Collapse.Panel
             key={3}
-            header='Journey info'
+            header='계산 상세'
             disabled={!selectedFlightInfo}
           >
             <FlightConfiguration
@@ -251,8 +252,8 @@ export default function CalcFlight({
           {flightResult.plan?.length && flightResult.type === 'planning' ? (
             <div>
               <Title level={5}>
-                Plan of flight from {journeyInfo.depart.name} to{' '}
-                {journeyInfo.arrive.name}
+                {journeyInfo.depart.name} 에서 {journeyInfo.arrive.name} 로의
+                수면계획
               </Title>
               <div className='max-h-[54vh] overflow-scroll overflow-x-hidden'>
                 {flightResult.plan.map((x, idx) => {
@@ -283,22 +284,21 @@ export default function CalcFlight({
             flightResult.type === 'no risk' && (
               <div>
                 <Title level={5}>
-                  There is{' '}
+                  <Text className='px-2 text-xl'>
+                    {journeyInfo.depart.name}
+                  </Text>
+                  에서
+                  <Text className='px-2 text-xl'>
+                    {journeyInfo.arrive.name}
+                  </Text>
+                  의 여정은{' '}
                   <Text
                     style={{
                       backgroundColor: '#8af58f',
                     }}
                     className='rounded-sm p-1'
                   >
-                    no risk
-                  </Text>{' '}
-                  of jet lag from your flight from
-                  <Text className='px-2 text-xl'>
-                    {journeyInfo.depart.name}
-                  </Text>
-                  to
-                  <Text className='px-2 text-xl'>
-                    {journeyInfo.arrive.name}
+                    리스크가 없습니다
                   </Text>
                 </Title>
               </div>
@@ -308,23 +308,23 @@ export default function CalcFlight({
             flightResult.type === 'little risk' && (
               <div>
                 <Title level={5}>
-                  There is{' '}
+                  <Text className='px-2 text-xl'>
+                    {journeyInfo.depart.name}
+                  </Text>
+                  에서
+                  <Text className='px-2 text-xl'>
+                    {journeyInfo.arrive.name}
+                  </Text>
+                  의 여정은{' '}
                   <Text
                     style={{
                       backgroundColor: '#e4e4c6',
                     }}
                     className='rounded-sm p-1'
                   >
-                    little risk
-                  </Text>{' '}
-                  of jet lag from your flight from
-                  <Text className='px-2 text-xl'>
-                    {journeyInfo.depart.name}
+                    작은 리스크
                   </Text>
-                  to
-                  <Text className='px-2 text-xl'>
-                    {journeyInfo.arrive.name}
-                  </Text>
+                  가 있을 것 같습니다.
                 </Title>
               </div>
             )}
@@ -333,28 +333,26 @@ export default function CalcFlight({
             <Collapse ghost>
               <Collapse.Panel
                 key={1}
-                header='To reduce travel fatigue'
+                header='여행 피로도를 줄이기 위해서는'
                 className='text-md font-bold'
               >
                 <Text strong className='pl-6'>
-                  During the flight:
+                  비행 중:
                 </Text>
                 <div className='pl-8 font-medium'>
                   <Paragraph className='!mb-0'>
-                    - Drink a lot of water (rather than tea, coffee, or alcohol)
+                    - 차, 커피, 술보다 물 많이 마시기
                   </Paragraph>
-                  <Paragraph className='!mb-0'>- Eat fruit</Paragraph>
+                  <Paragraph className='!mb-0'>- 과일 먹기</Paragraph>
                 </div>
                 <Text strong className='pl-6'>
-                  Upon arrival:
+                  도착 시:
                 </Text>
                 <div className='pl-8 font-light'>
+                  <Paragraph className='!mb-0'>- 물 많이 마시기</Paragraph>
+                  <Paragraph className='!mb-0'>- 샤워하기</Paragraph>
                   <Paragraph className='!mb-0'>
-                    - Drink a lot of water
-                  </Paragraph>
-                  <Paragraph className='!mb-0'>- Shower</Paragraph>
-                  <Paragraph className='!mb-0'>
-                    - Nap for 20 minutes if needed
+                    - 필요한 경우 20분간 낮잠 자기
                   </Paragraph>
                 </div>
               </Collapse.Panel>
@@ -373,7 +371,7 @@ export default function CalcFlight({
               className='w-full whitespace-nowrap rounded-md'
               onClick={() => setLevel(1)}
             >
-              Previous
+              이전
             </Button>
           </div>
         </div>

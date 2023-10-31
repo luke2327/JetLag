@@ -107,7 +107,7 @@ export default function FlightConfiguration({
       {contextHolder}
       <Row gutter={[4, 4]}>
         <Col xs={24} sm={8}>
-          <Paragraph className='!mb-0'>Time difference</Paragraph>
+          <Paragraph className='!mb-0'>시차</Paragraph>
           <Input
             size='small'
             disabled
@@ -116,7 +116,7 @@ export default function FlightConfiguration({
           ></Input>
         </Col>
         <Col xs={12} sm={8}>
-          <Paragraph className='!mb-0'>Sleep time</Paragraph>
+          <Paragraph className='!mb-0'>취침시간</Paragraph>
           <TimePicker
             showNow={false}
             minuteStep={30}
@@ -135,7 +135,7 @@ export default function FlightConfiguration({
           />
         </Col>
         <Col xs={12} sm={8}>
-          <Paragraph className='!mb-0'>Wakeup time</Paragraph>
+          <Paragraph className='!mb-0'>기상시간</Paragraph>
           <TimePicker
             showNow={false}
             minuteStep={30}
@@ -156,14 +156,14 @@ export default function FlightConfiguration({
       </Row>
       <Row gutter={[8, 8]} className='mt-2'>
         <Col xs={24} sm={12}>
-          <Text>Depart time</Text>
+          <Text>출발</Text>
           <div className='flex items-center gap-2'>
             <PlaneTakeoff strokeWidth={siteConfig.lucideStrokeWidth} />
             <Text>{flightInfo.departDateTime.toString()}</Text>
           </div>
         </Col>
         <Col xs={24} sm={12}>
-          <Text>Arrive time</Text>
+          <Text>도착</Text>
           <div className='flex items-center gap-2'>
             <PlaneLanding strokeWidth={siteConfig.lucideStrokeWidth} />
             <Text>{flightInfo.arriveDateTime.toString()}</Text>
@@ -171,24 +171,21 @@ export default function FlightConfiguration({
         </Col>
       </Row>
       <Row gutter={[8, 2]} className='mt-2'>
-        <Col xs={24} md={14}>
-          Start shifting sleep schedule to new time zone.
-        </Col>
-        <Col xs={24} md={10}>
-          up to
+        <Col xs={24}>
+          시차적응을 위한 날짜 조정
           <InputNumber
             min={0}
             max={10}
             maxLength={2}
             size='small'
-            className='mx-1.5 max-w-[40px] text-center'
+            className='mx-1.5 max-w-[40px] !text-center'
             controls={false}
             defaultValue={0}
             onChange={(val) =>
               setFlight({ ...flight, daysbefore: val as number })
             }
           />
-          days before departing.
+          일 후 탑승
         </Col>
       </Row>
       <Row className='mt-2'>
@@ -202,7 +199,7 @@ export default function FlightConfiguration({
           onClick={calculate}
           className='w-full whitespace-nowrap rounded-md'
         >
-          Calculate
+          계산
         </Button>
       </Row>
     </div>

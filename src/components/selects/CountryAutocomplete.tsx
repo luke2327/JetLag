@@ -95,7 +95,11 @@ const App = ({
     size='middle'
     className={className}
   >
-    <Input className='text-center' size='middle' placeholder='input here' />
+    <Input
+      className='text-center'
+      size='middle'
+      placeholder={type === 'depart' ? '출발지' : '도착지'}
+    />
   </AutoComplete>
 );
 
