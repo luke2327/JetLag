@@ -3,16 +3,23 @@
 import { Button, Col, Row } from 'antd';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
 import CalcFlight from '@/components/modal/CalcFlight';
 import CalcSleep from '@/components/modal/CalcSleep';
+import RecommendSleep from '@/components/modal/RecommendSleep';
 import EaseOut from '@/components/motion/EaseOut';
 import Title from '@/components/Title';
 import TransparentLayer from '@/components/TransparentLayer';
 
+import { authState } from '@/store/auth';
+
 export default function HomePage() {
-  const [calcSleepModal, setCalcSleepModal] = useState<boolean>(false);
-  const [calcFlightModal, setCalcFlightModal] = useState<boolean>(false);
+  const auth = useRecoilValue(authState);
+  const offset = auth.status === 'login' ? 8 : 12;
+  const [calcSleepModal, setCalcSleepModal] = useState(false);
+  const [calcFlightModal, setCalcFlightModal] = useState(false);
+  const [recommendSleepModal, setRecommendSleepModal] = useState(false);
 
   return (
     <main
@@ -24,28 +31,37 @@ export default function HomePage() {
       </EaseOut>
       <TransparentLayer className='flex w-full max-w-[600px] justify-center gap-2'>
         <Row gutter={[16, 16]} className='w-[90%]'>
-          <Col xs={24} sm={8}>
-            <AccentButton delay={0.5} title='수면시간 추천' />
-          </Col>
-          <Col xs={24} sm={8}>
+          {auth.status === 'login' && (
+            <Col xs={24} sm={8}>
+              <AccentButton
+                delay={0.2}
+                title='수면시간 추천'
+                onClickFn={setRecommendSleepModal}
+              />
+            </Col>
+          )}
+          <Col xs={24} sm={offset}>
             <AccentButton
-              delay={0.8}
+              delay={0.4}
               title='수면시간 계산'
               onClickFn={setCalcSleepModal}
             />
           </Col>
-          <Col xs={24} sm={8}>
+          <Col xs={24} sm={offset}>
             <AccentButton
-              delay={1.1}
+              delay={0.6}
               title='JetLag'
               onClickFn={setCalcFlightModal}
             />
           </Col>
         </Row>
-        {/*<Button2 onClick={sleepCalculate}>sss</Button2>*/}
       </TransparentLayer>
       <CalcSleep isModalOpen={calcSleepModal} setModal={setCalcSleepModal} />
       <CalcFlight isModalOpen={calcFlightModal} setModal={setCalcFlightModal} />
+      <RecommendSleep
+        isModalOpen={recommendSleepModal}
+        setModal={setRecommendSleepModal}
+      />
     </main>
   );
 }
