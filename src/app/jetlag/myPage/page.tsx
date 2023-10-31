@@ -67,6 +67,9 @@ export default function MyPage() {
 
     await POST<{ success: boolean }>('/auth/updateUser', params, {
       withCredentials: true,
+      headers: {
+        Authorization: localStorage.getItem('jl'),
+      },
     });
 
     setAuth({ ...auth });

@@ -50,12 +50,9 @@ export default function LoginPage() {
     if (res.success) {
       const dayJsInstance = toDayJs((res as Credential).user);
 
-      setCookie('Authorization', (res as Credential).authorization, {
-        path: '/',
-        maxAge: 3600,
-        domain: 'jetlag-chlogy.koyeb.app',
-        sameSite: 'none',
-      });
+      localStorage.setItem('jl', (res as Credential).authorization);
+
+      setCookie('Authorization', (res as Credential).authorization);
       setLoginLoading(false);
       setAuth({
         ...auth,

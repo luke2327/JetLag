@@ -25,12 +25,12 @@ export default function HomePage() {
       <TransparentLayer className='flex w-full max-w-[600px] justify-center gap-2'>
         <Row gutter={[16, 16]} className='w-[90%]'>
           <Col xs={24} sm={8}>
-            <AccentButton delay={0.5} title='Recommand sleep' />
+            <AccentButton delay={0.5} title='수면시간 추천' />
           </Col>
           <Col xs={24} sm={8}>
             <AccentButton
               delay={0.8}
-              title='Sleep calc'
+              title='수면시간 계산'
               onClickFn={setCalcSleepModal}
             />
           </Col>
