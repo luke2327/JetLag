@@ -16,6 +16,7 @@ import moment from 'moment-timezone';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
+import logger from '@/lib/logger';
 import useAxios, { NetworkError } from '@/hooks/axios';
 
 import { JourneyInfo } from '@/components/modal/CalcFlight';
@@ -42,8 +43,8 @@ function getTimeDiff(departTimezone: TimeZone, arriveTimezone: TimeZone) {
     const ar = moment.tz.zone(arriveTimezone)?.offset(now) as number;
 
     return (dp - ar) / 60;
-  } catch (e) {
-    console.log('시차 구하기 에러', e);
+  } catch (e: unknown) {
+    logger('시차 구하기 에러', e);
 
     return 0;
   }

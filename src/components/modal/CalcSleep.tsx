@@ -98,11 +98,12 @@ export default function CalcSleep({
       onCancel={() => setModal(false)}
       footer={null}
       centered
-      width='800px'
+      width='auto'
+      className='!max-w-[700px] !p-2'
     >
       <Divider className='mt-0' />
       <div className='flex flex-col items-center justify-center gap-4'>
-        <Row gutter={[16, 16]}>
+        <Row gutter={[8, 8]} className='!xs:w-auto !w-full'>
           <Col xs={24} sm={8}>
             <Select
               size='small'
@@ -140,7 +141,8 @@ export default function CalcSleep({
             />
           </Col>
         </Row>
-        <Row gutter={[16, 16]}>
+        <Divider className='my-1' />
+        <Row gutter={[8, 8]}>
           <Col xs={24} sm={8}>
             <Button
               type='default'

@@ -6,14 +6,14 @@ import cityMatching, { DestinationInfo } from '@/lib/cityMatching';
 const renderTitle = (title: string) => (
   <span>
     {title}
-    <a
-      style={{ float: 'right' }}
-      href='https://www.google.com/search?q=antd'
-      target='_blank'
-      rel='noopener noreferrer'
-    >
-      more
-    </a>
+    {/*<a*/}
+    {/*  style={{ float: 'right' }}*/}
+    {/*  href='https://www.google.com/search?q=antd'*/}
+    {/*  target='_blank'*/}
+    {/*  rel='noopener noreferrer'*/}
+    {/*>*/}
+    {/*  more*/}
+    {/*</a>*/}
   </span>
 );
 
@@ -27,10 +27,7 @@ const renderItem = (title: string, code: string) => ({
       }}
     >
       {title}
-      <span>
-        {/*<Plane strokeWidth={siteConfig.lucideStrokeWidth} />*/}
-        {code}
-      </span>
+      <span>{code}</span>
     </div>
   ),
 });
