@@ -94,7 +94,7 @@ export default function Header() {
           />
         </button>
         <div className='linear-ivory-text flex w-full items-center justify-center'>
-          <Link href='/jetlag' className='font-bold tracking-widest'>
+          <Link href='/jetlag' className='ml-[-36px] font-bold tracking-widest'>
             Jetlag
           </Link>
         </div>
