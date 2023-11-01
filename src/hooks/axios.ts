@@ -3,6 +3,8 @@ import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { useResetRecoilState } from 'recoil';
 
+import logger from '@/lib/logger';
+
 import { authState } from '@/store/auth';
 
 import { siteConfig } from '@/constant/config';
@@ -25,9 +27,8 @@ export default function useAxios() {
       .post<T>(...rest)
       .then((res) => res.data)
       .catch((e) => {
-        console.log(e, 'Axios error');
         if (e.message === 'timeout of 10000ms exceeded') {
-          console.log('타임아웃 에러');
+          logger('타임아웃 에러', e);
         } else {
           localStorage.removeItem('jl');
           deleteCookie('Authorization');

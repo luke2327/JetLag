@@ -5,3 +5,8 @@ export type Credential = {
   authorization: string;
   success: boolean;
 };
+
+export type LoginParams = {
+  email: string;
+  password: string;
+};
