@@ -287,6 +287,10 @@ select:focus {
   header > #nav-button {
     display: flex !important;
   }
+
+  .\!xs\:w-auto > div {
+    padding: 0 !important;
+  }
 }
 
 #header-drawer a {
