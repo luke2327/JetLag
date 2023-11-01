@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
 import { toDayJs } from '@/lib/helper';
+import logger from '@/lib/logger';
 import useAxios, { NetworkError } from '@/hooks/axios';
 
 import EaseOut from '@/components/motion/EaseOut';
@@ -15,7 +16,7 @@ import TransparentLayer from '@/components/TransparentLayer';
 
 import { authState } from '@/store/auth';
 
-import { Credential } from '@/interface/auth';
+import { Credential, LoginParams } from '@/interface/auth';
 
 const { Text, Title } = Typography;
 
@@ -42,7 +43,7 @@ export default function LoginPage() {
     }
   }, []);
 
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: LoginParams) => {
     setLoginLoading(true);
 
     const res = await POST<Credential>('/auth/login', values);
@@ -78,8 +79,8 @@ export default function LoginPage() {
     }
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+  const onFinishFailed = (errorInfo: unknown) => {
+    logger('Failed:', errorInfo);
   };
 
   return (

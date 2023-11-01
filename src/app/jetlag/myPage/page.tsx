@@ -80,10 +80,6 @@ export default function MyPage() {
     });
   };
 
-  const onFinishFailed = () => {
-    console.log('this works!');
-  };
-
   useEffect(() => {
     if ((auth.status as Auth['status']) === 'none') {
       route.push('/jetlag/login');
@@ -111,7 +107,6 @@ export default function MyPage() {
               style={{ maxWidth: 600 }}
               initialValues={auth.user}
               onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
               autoComplete='off'
               className='!sm:pr-10 !flex !w-full !flex-col rounded-md !pt-10'
               colon={false}

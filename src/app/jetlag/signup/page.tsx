@@ -6,13 +6,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
+import logger from '@/lib/logger';
 import useAxios, { NetworkError } from '@/hooks/axios';
 
 import EaseOut from '@/components/motion/EaseOut';
 import TransparentLayer from '@/components/TransparentLayer';
 
 import { siteConfig } from '@/constant/config';
-import { Credential } from '@/interface/auth';
+import { Credential, LoginParams } from '@/interface/auth';
 
 const { Title, Text } = Typography;
 
@@ -27,7 +28,7 @@ export default function SignupPage() {
   const [level, setLevel] = useState(1);
   const [messageApi, contextHolder] = message.useMessage();
   const [signupLoading, setSignupLoading] = useState(false);
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: LoginParams) => {
     setSignupLoading(true);
 
     const res = await POST<Credential>('/auth/signup', values);
@@ -44,8 +45,8 @@ export default function SignupPage() {
     }
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+  const onFinishFailed = (errorInfo: unknown) => {
+    logger('Failed:', errorInfo);
   };
 
   return (
