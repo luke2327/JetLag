@@ -1,3 +1,5 @@
+'use client';
+
 import { Divider, Drawer } from 'antd';
 import { deleteCookie } from 'cookies-next';
 import { Menu } from 'lucide-react';
