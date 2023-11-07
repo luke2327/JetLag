@@ -1,10 +1,12 @@
 'use client';
 
-import { Divider, Drawer } from 'antd';
+import { Divider, Drawer, Select, Switch } from 'antd';
 import { deleteCookie } from 'cookies-next';
-import { Menu } from 'lucide-react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { Menu, Moon, Sun } from 'lucide-react';
+// import { useRouter } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import { usePathname, useRouter } from 'next-intl/client';
+import IntlLink from 'next-intl/link';
 import { useState } from 'react';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 
@@ -14,7 +16,11 @@ import { flightResultState, flightState } from '@/store/flight';
 import { siteConfig } from '@/constant/config';
 
 export default function Header() {
+  const locale = useLocale();
+  const pathname = usePathname();
+  const t = useTranslations('common');
   const [drawerOpen, setDrawerOpen] = useState(false);
+  // const route = useRouter();
   const route = useRouter();
   const auth = useRecoilValue(authState);
   const resetAuth = useResetRecoilState(authState);
@@ -29,7 +35,7 @@ export default function Header() {
     onCloseDrawer();
     localStorage.removeItem('jl');
 
-    route.push('/jetlag/login');
+    route.push('/login');
   };
   const openDrawer = () => {
     setDrawerOpen(true);
@@ -37,53 +43,93 @@ export default function Header() {
   const onCloseDrawer = () => {
     setDrawerOpen(false);
   };
+  const languageChange = (locale: string) => {
+    route.replace(pathname, { locale });
+  };
+  const themeChange = (value: any) => {
+    if (value === true) {
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+      window.localStorage.setItem('mode', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      window.localStorage.setItem('mode', 'light');
+    }
+  };
 
   return (
     <header className='sticky top-0 flex h-12 w-[100vw] items-center'>
-      <ul id='horizontal-nav' className='flex w-full justify-around'>
-        <li>
-          <Link className='linear-ivory-text' href='/jetlag'>
-            Jet Lag
-          </Link>
-        </li>
-        <li>
-          <Link className='linear-ivory-text' href='/jetlag/service'>
-            Service
-          </Link>
-        </li>
-        <li>
-          <Link className='linear-ivory-text' href='/jetlag/shopping'>
-            Shopping
-          </Link>
-        </li>
-        <li>
-          <Link className='linear-ivory-text' href='/jetlag/customer'>
-            Customer Center
-          </Link>
-        </li>
-        <li>
-          <Link className='linear-ivory-text' href='/jetlag/myPage'>
-            My Page
-          </Link>
-        </li>
-        {auth.status === 'login' ? (
+      <div id='horizontal-nav' className='flex w-full justify-between'>
+        <ul className='flex w-full gap-10 pl-4'>
           <li>
-            <Link
-              className='linear-ivory-text'
-              href='/jetlag/login'
-              onClick={logout}
-            >
-              Logout
-            </Link>
+            <IntlLink className='linear-ivory-text' href='/'>
+              {t('title')}
+            </IntlLink>
           </li>
-        ) : (
           <li>
-            <Link className='linear-ivory-text' href='/jetlag/login'>
-              Login
-            </Link>
+            <IntlLink className='linear-ivory-text' href='/service'>
+              {t('service')}
+            </IntlLink>
           </li>
-        )}
-      </ul>
+          <li>
+            <IntlLink className='linear-ivory-text' href='/shopping'>
+              {t('shopping')}
+            </IntlLink>
+          </li>
+          <li>
+            <IntlLink className='linear-ivory-text' href='/customer'>
+              {t('customerCenter')}
+            </IntlLink>
+          </li>
+          <li>
+            <IntlLink className='linear-ivory-text' href='/myPage'>
+              {t('myPage')}
+            </IntlLink>
+          </li>
+          {auth.status === 'login' ? (
+            <li>
+              <IntlLink
+                className='linear-ivory-text'
+                href='/login'
+                onClick={logout}
+              >
+                {t('logout')}
+              </IntlLink>
+            </li>
+          ) : (
+            <li>
+              <IntlLink className='linear-ivory-text' href='/login'>
+                {t('login')}
+              </IntlLink>
+            </li>
+          )}
+        </ul>
+        <div id='language-selector' className='flex items-center'>
+          <Select
+            size='small'
+            bordered={false}
+            defaultValue={locale}
+            onChange={languageChange}
+            className='w-[84px]'
+            options={[
+              { value: 'en', label: 'English' },
+              { value: 'ko', label: '한국어' },
+              { value: 'ja', label: '日本語' },
+            ]}
+          ></Select>
+          <Switch
+            className='mr-2'
+            onChange={themeChange}
+            checkedChildren={
+              <Moon strokeWidth={siteConfig.lucideStrokeWidth} size={16} />
+            }
+            unCheckedChildren={
+              <Sun strokeWidth={siteConfig.lucideStrokeWidth} size={16} />
+            }
+          />
+        </div>
+      </div>
       <div id='nav-button' style={{ display: 'none' }} className='w-full'>
         <button
           onClick={openDrawer}
@@ -96,9 +142,9 @@ export default function Header() {
           />
         </button>
         <div className='linear-ivory-text flex w-full items-center justify-center'>
-          <Link href='/jetlag' className='ml-[-36px] font-bold tracking-widest'>
-            Jetlag
-          </Link>
+          <IntlLink href='/' className='ml-[-36px] font-bold tracking-widest'>
+            {t('title')}
+          </IntlLink>
         </div>
       </div>
 
@@ -121,41 +167,41 @@ export default function Header() {
 
         <ul className='flex w-full flex-col justify-around gap-2'>
           <li>
-            <Link href='/jetlag' onClick={onCloseDrawer}>
-              Jet Lag
-            </Link>
+            <IntlLink href='/' onClick={onCloseDrawer}>
+              {t('title')}
+            </IntlLink>
           </li>
           <li>
-            <Link href='/jetlag/service' onClick={onCloseDrawer}>
-              Service
-            </Link>
+            <IntlLink href='/service' onClick={onCloseDrawer}>
+              {t('service')}
+            </IntlLink>
           </li>
           <li>
-            <Link href='/jetlag/shopping' onClick={onCloseDrawer}>
-              Shopping
-            </Link>
+            <IntlLink href='/shopping' onClick={onCloseDrawer}>
+              {t('shopping')}
+            </IntlLink>
           </li>
           <li>
-            <Link href='/jetlag/customer' onClick={onCloseDrawer}>
-              Customer Center
-            </Link>
+            <IntlLink href='/customer' onClick={onCloseDrawer}>
+              {t('customerCenter')}
+            </IntlLink>
           </li>
           <li>
-            <Link href='/jetlag/myPage' onClick={onCloseDrawer}>
-              My Page
-            </Link>
+            <IntlLink href='/myPage' onClick={onCloseDrawer}>
+              {t('myPage')}
+            </IntlLink>
           </li>
           {auth.status === 'login' ? (
             <li>
-              <Link href='/jetlag/login' onClick={logout}>
-                Logout
-              </Link>
+              <IntlLink href='/login' onClick={logout}>
+                {t('logout')}
+              </IntlLink>
             </li>
           ) : (
             <li>
-              <Link href='/jetlag/login' onClick={onCloseDrawer}>
-                Login
-              </Link>
+              <IntlLink href='/login' onClick={onCloseDrawer}>
+                {t('login')}
+              </IntlLink>
             </li>
           )}
         </ul>
