@@ -1,0 +1,12 @@
+{
+  "common": {
+    "title": "Jetlag",
+    "service": "Service",
+    "shopping": "Shopping",
+    "customerCenter": "Customer Center",
+    "myPage": "My Page",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "service": ""
+}

@@ -1,0 +1,20 @@
+{
+  "common": {
+    "title": "Jetlag",
+    "service": "Service",
+    "shopping": "Shopping",
+    "customerCenter": "Customer Center",
+    "myPage": "My Page",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "service": {
+    "title": "Jet Lag Service",
+    "sleepCalculator": "Sleep calculator",
+    "calculateSleepTime": "Calculate sleep time",
+    "calculateJatlag": "Calculate Jatlag",
+    "calculate": "Calculate",
+    "sleepNow": "Sleep Now",
+    "checkAgain": "Check Again"
+  }
+}
