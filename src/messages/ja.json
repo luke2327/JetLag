@@ -1,0 +1,12 @@
+{
+  "common": {
+    "title": "Jetlag",
+    "service": "サービス",
+    "shopping": "ショッピング",
+    "customerCenter": "カスタマセンター",
+    "myPage": "マイページ",
+    "login": "ログイン",
+    "logout": "ログアウト"
+  },
+  "service": ""
+}
