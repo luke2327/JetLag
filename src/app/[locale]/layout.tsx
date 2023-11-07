@@ -60,7 +60,11 @@ export default function AppLayout({
             locale={antdLocale}
             theme={{
               token: {
-                colorPrimary: '#d0c79b',
+                // colorPrimary: '#d0c79b',
+                colorPrimary: '#a09d9d',
+                borderRadius: 4,
+
+                // Alias Token
               },
               components: {
                 Form: {
@@ -80,7 +84,7 @@ export default function AppLayout({
                   <AuthProvider setLoading={setLoading}>
                     <EaseOut>
                       {loading ? (
-                        <div className='linear-ivory-text p-2'>Loading</div>
+                        <div className='linear-text p-2'>Loading</div>
                       ) : (
                         <section className='ivory'>{children}</section>
                       )}

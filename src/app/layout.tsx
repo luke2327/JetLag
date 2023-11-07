@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   return (
-    <html>
+    <html className='light'>
       <body className={inter.className}>{children}</body>
     </html>
   );
