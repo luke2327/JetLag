@@ -149,43 +149,28 @@ export default function CalcSleep({
           <Col xs={24} sm={8}>
             <Button
               type='default'
-              style={{
-                color: 'var(--textbrown)',
-                backgroundColor: 'rgb(255, 253, 243)',
-                border: '1px solid #c0c0c0',
-              }}
               className='xs:w-40 w-full'
               onClick={calculate}
             >
-              <Text>{t('calculate')}</Text>
+              {t('calculate')}
             </Button>
           </Col>
           <Col xs={24} sm={8}>
             <Button
               type='default'
-              style={{
-                color: 'var(--textbrown)',
-                backgroundColor: 'rgb(255, 253, 243)',
-                border: '1px solid #c0c0c0',
-              }}
               className='xs:w-40 w-full'
               onClick={sleepNow}
             >
-              <Text>{t('sleepNow')}</Text>
+              {t('sleepNow')}
             </Button>
           </Col>
           <Col xs={24} sm={8}>
             <Button
               type='default'
-              style={{
-                color: 'var(--textbrown)',
-                backgroundColor: 'rgb(255, 253, 243)',
-                border: '1px solid #c0c0c0',
-              }}
               className='xs:w-40 w-full'
               onClick={checkAgain}
             >
-              <Text>{t('checkAgain')}</Text>
+              {t('checkAgain')}
             </Button>
           </Col>
         </Row>

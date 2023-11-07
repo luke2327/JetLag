@@ -2,7 +2,7 @@
 
 import { Divider, Drawer, Select, Switch } from 'antd';
 import { deleteCookie } from 'cookies-next';
-import { Menu, Moon, Sun } from 'lucide-react';
+import { Home, Menu, Moon, Sun } from 'lucide-react';
 // import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next-intl/client';
@@ -20,7 +20,6 @@ export default function Header() {
   const pathname = usePathname();
   const t = useTranslations('common');
   const [drawerOpen, setDrawerOpen] = useState(false);
-  // const route = useRouter();
   const route = useRouter();
   const auth = useRecoilValue(authState);
   const resetAuth = useResetRecoilState(authState);
@@ -46,8 +45,8 @@ export default function Header() {
   const languageChange = (locale: string) => {
     route.replace(pathname, { locale });
   };
-  const themeChange = (value: any) => {
-    if (value === true) {
+  const themeChange = (value: boolean) => {
+    if (value) {
       document.documentElement.classList.remove('light');
       document.documentElement.classList.add('dark');
       window.localStorage.setItem('mode', 'dark');
@@ -60,46 +59,49 @@ export default function Header() {
 
   return (
     <header className='sticky top-0 flex h-12 w-[100vw] items-center'>
-      <div id='horizontal-nav' className='flex w-full justify-between'>
-        <ul className='flex w-full gap-10 pl-4'>
+      <div
+        id='horizontal-nav'
+        className='flex w-full items-center justify-between'
+      >
+        <ul className='flex w-full gap-4 pl-4'>
           <li>
-            <IntlLink className='linear-ivory-text' href='/'>
-              {t('title')}
+            <IntlLink className='text-reverse-color' href='/'>
+              <Home
+                className='text-reverse-color'
+                strokeWidth={siteConfig.lucideStrokeWidth}
+                size={20}
+              />
             </IntlLink>
           </li>
           <li>
-            <IntlLink className='linear-ivory-text' href='/service'>
+            <IntlLink className='text-reverse-color' href='/service'>
               {t('service')}
             </IntlLink>
           </li>
           <li>
-            <IntlLink className='linear-ivory-text' href='/shopping'>
+            <IntlLink className='text-reverse-color' href='/shopping'>
               {t('shopping')}
             </IntlLink>
           </li>
           <li>
-            <IntlLink className='linear-ivory-text' href='/customer'>
+            <IntlLink className='text-reverse-color' href='/customer'>
               {t('customerCenter')}
             </IntlLink>
           </li>
           <li>
-            <IntlLink className='linear-ivory-text' href='/myPage'>
+            <IntlLink className='text-reverse-color' href='/myPage'>
               {t('myPage')}
             </IntlLink>
           </li>
           {auth.status === 'login' ? (
             <li>
-              <IntlLink
-                className='linear-ivory-text'
-                href='/login'
-                onClick={logout}
-              >
+              <IntlLink className='text-reverse-color' href='/login' onClick={logout}>
                 {t('logout')}
               </IntlLink>
             </li>
           ) : (
             <li>
-              <IntlLink className='linear-ivory-text' href='/login'>
+              <IntlLink className='text-reverse-color' href='/login'>
                 {t('login')}
               </IntlLink>
             </li>
@@ -138,10 +140,10 @@ export default function Header() {
         >
           <Menu
             strokeWidth={siteConfig.lucideStrokeWidth}
-            color='var(--ivory)'
+            color='var(--reverseColor)'
           />
         </button>
-        <div className='linear-ivory-text flex w-full items-center justify-center'>
+        <div className='text-reverse-color flex w-full items-center justify-center'>
           <IntlLink href='/' className='ml-[-36px] font-bold tracking-widest'>
             {t('title')}
           </IntlLink>
@@ -156,7 +158,7 @@ export default function Header() {
         open={drawerOpen}
         key='drawer-menu'
         width='50vw'
-        style={{ backgroundColor: 'var(--ivory)' }}
+        style={{ backgroundColor: 'var(--primary)' }}
       >
         {auth.status === 'login' ? (
           <div>

@@ -193,7 +193,7 @@ export default function CalcFlight({
                       (!journeyInfo.arrive && !journeyInfo.depart)
                     }
                     style={{
-                      color: 'var(--textbrown)',
+                      color: 'var(--textPrimary)',
                       backgroundColor: 'rgb(255, 253, 243)',
                       border: '1px solid #c0c0c0',
                     }}
@@ -362,7 +362,7 @@ export default function CalcFlight({
             <Button
               type='primary'
               style={{
-                color: 'var(--textbrown)',
+                color: 'var(--textPrimary)',
                 backgroundColor: 'rgb(255, 253, 243)',
                 border: '1px solid #c0c0c0',
               }}
