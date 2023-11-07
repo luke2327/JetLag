@@ -9,4 +9,5 @@ export const siteConfig = {
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:8484/api'
       : 'https://jetlag-chlogy.koyeb.app/api',
+  supportedLanguage: ['en', 'ko', 'ja'],
 };

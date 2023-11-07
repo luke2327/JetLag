@@ -36,7 +36,7 @@ export default function useAxios() {
           resetAuth();
 
           if (e.message === 'Request failed with status code 401') {
-            route.push('/jetlag/login');
+            route.push('/login');
           }
         }
 
