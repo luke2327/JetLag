@@ -281,7 +281,7 @@ select:focus {
 }
 
 @media (max-width: 576px) {
-  header > ul#horizontal-nav {
+  header > #horizontal-nav {
     display: none !important;
   }
   header > #nav-button {
@@ -295,4 +295,21 @@ select:focus {
 
 #header-drawer a {
   color: #222;
+}
+
+#language-selector div, #language-selector span {
+  color: var(--ivory) !important;
+}
+
+#language-selector svg {
+  fill: var(--ivory) !important;
+}
+
+.ant-switch-inner-unchecked {
+  position: relative;
+  top: 6px;
+}
+
+.ant-switch-inner-checked {
+  margin-top: 3px !important;
 }
