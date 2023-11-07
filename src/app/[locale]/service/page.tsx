@@ -45,7 +45,7 @@ export default function HomePage() {
           <Col xs={24} sm={offset}>
             <AccentButton
               delay={0.4}
-              title={t('sleepCalculator')}
+              title={t('calculateSleepTime')}
               onClickFn={setCalcSleepModal}
             />
           </Col>

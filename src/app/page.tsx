@@ -7,6 +7,6 @@ export default function RootPage() {
   const route = useRouter();
 
   useEffect(() => {
-    route.push('/jetlag');
+    route.push('/');
   }, []);
 }

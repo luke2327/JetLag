@@ -2,28 +2,34 @@
 
 import { Collapse, CollapseProps } from 'antd';
 import { Typography } from 'antd';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 
 import EaseOut from '@/components/motion/EaseOut';
 import TransparentLayer from '@/components/TransparentLayer';
 
 import customerInfos from '@/constant/customerInfos';
+import { SupportedLanguage } from '@/interface/common';
 
-const items: CollapseProps['items'] = customerInfos.map((x) => ({
-  key: x.key,
-  label: x.label,
-  children: (
-    <div className='max-h-[40vh] overflow-x-hidden overflow-y-scroll pl-4 leading-7'>
-      {x.content.map((x, idx) => (
-        <p key={idx}>{x}</p>
-      ))}
-    </div>
-  ),
-}));
+const items = (language: SupportedLanguage): CollapseProps['items'] =>
+  customerInfos[language].map((x) => ({
+    key: x.key,
+    label: x.label,
+    children: (
+      <div className='max-h-[40vh] overflow-x-hidden overflow-y-scroll pl-4 leading-7'>
+        {x.content.map((x, idx) => (
+          <p key={idx}>{x}</p>
+        ))}
+      </div>
+    ),
+  }));
 
 const { Title } = Typography;
 
 export default function CustomerPage() {
+  const t = useTranslations('common');
+  const locale = useLocale() as SupportedLanguage;
+
   return (
     <main
       id='customer'
@@ -32,14 +38,14 @@ export default function CustomerPage() {
       <EaseOut className='flex w-full max-w-[1200px] flex-col justify-center'>
         <TransparentLayer>
           <Title level={3} className='!mb-0 text-center !text-white'>
-            Customer Center
+            {t('customerCenter')}
           </Title>
           <Collapse
             rootClassName='p-2'
             accordion={true}
             defaultActiveKey={['1']}
             ghost
-            items={items}
+            items={items(locale)}
             style={{ color: 'var(--ivory)' }}
           />
         </TransparentLayer>

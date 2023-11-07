@@ -11,6 +11,7 @@ import {
   Typography,
 } from 'antd';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { SetterOrUpdater, useRecoilState } from 'recoil';
 
@@ -24,6 +25,7 @@ import { Auth, authState, CompactAuth } from '@/store/auth';
 const { Title } = Typography;
 
 export default function MyPage() {
+  const t = useTranslations('myPage');
   const route = useRouter();
   const { POST } = useAxios();
   const [messageApi, contextHolder] = message.useMessage();
@@ -98,7 +100,7 @@ export default function MyPage() {
         <EaseOut className='flex w-full max-w-[600px] flex-col justify-center'>
           <TransparentLayer>
             <Title level={3} className='!mb-0 text-center !text-white'>
-              My Page
+              {t('title')}
             </Title>
             <Form
               name='myPage'
@@ -112,33 +114,39 @@ export default function MyPage() {
               colon={false}
             >
               <div>
-                <Form.Item<Auth['user']> label='Email' name='email'>
+                <Form.Item<Auth['user']> label={t('email')} name='email'>
                   <Input disabled={true} />
                 </Form.Item>
-                <Form.Item<Auth['user']> label='Age' name='age'>
+                <Form.Item<Auth['user']> label={t('age')} name='age'>
                   <InputNumber maxLength={3} />
                 </Form.Item>
-                <Form.Item<Auth['user']> label='Phone' name='phone'>
+                <Form.Item<Auth['user']> label={t('phone')} name='phone'>
                   <Input maxLength={20} />
                 </Form.Item>
-                <Form.Item<Auth['user']> label='Birthday' name='birthday'>
+                <Form.Item<Auth['user']> label={t('birthday')} name='birthday'>
                   <DatePicker placeholder='Birthday' format='YYYY-MM-DD' />
                 </Form.Item>
-                <Form.Item<Auth['user']> label='SleepTime' name='sleepTime'>
+                <Form.Item<Auth['user']>
+                  label={t('sleepTime')}
+                  name='sleepTime'
+                >
                   <TimePicker
                     showNow={false}
                     minuteStep={30}
                     showSecond={false}
-                    placeholder='Sleep time'
+                    placeholder={t('sleepTime')}
                     format='HH:mm'
                   />
                 </Form.Item>
-                <Form.Item<Auth['user']> label='WakeupTime' name='wakeupTime'>
+                <Form.Item<Auth['user']>
+                  label={t('wakeupTime')}
+                  name='wakeupTime'
+                >
                   <TimePicker
                     showNow={false}
                     minuteStep={30}
                     showSecond={false}
-                    placeholder='Wakeup time'
+                    placeholder={t('wakeupTime')}
                     format='HH:mm'
                   />
                 </Form.Item>
