@@ -26,13 +26,28 @@
   --color-primary-800: rgb(var(--tw-color-primary-800)); /* #075985 */
   --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0c4a6e */
   /* #endregion  /**======== Primary Color =========== */
+}
 
-  --darkbrown: #353129;
-  --brown: #494336;
-  --ivory: #F8F5E3;
-  --light: #fffdf3;
-  --lightbrown: #aba085;
-  --textbrown: #6e6e6e;
+:root.light {
+  --primary: #F8F5E3;
+  --linearStart: #F8F5E3;
+  --secondary: #fffdf3;
+  --secondarybrown: #aba085;
+  --textPrimary: #6e6e6e;
+  --reverseColor: #494336;
+  --transparentLinearStart: 231,229,219,1;
+  --transparentLinearEnd: 230,220,200,0.4;
+}
+
+:root.dark {
+  --primary: #494336;
+  --linearStart: #6b6965;
+  --secondary: #9e9581;
+  --secondarybrown: #494336;
+  --textPrimary: #F8F5E3;
+  --reverseColor: #F8F5E3;
+  --transparentLinearStart: 73,72,67,1;
+  --transparentLinearEnd: 75,73,60,0.4;
 }
 
 @layer base {
@@ -142,24 +157,46 @@
 }
 
 header {
-  background-color: var(--brown);
+  background-color: var(--primary);
 }
 
-.linear-ivory-text {
+.linear-text {
   color: unset !important;
   text-decoration: none !important;
-  background: linear-gradient(to right, var(--ivory), var(--light));
+  background: linear-gradient(to right, var(--linearStart), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.text-reverse-color,
+.ant-btn,
+label[for="authenticate_email"],
+label[for="authenticate_password"],
+label[for="myPage_email"],
+label[for="myPage_age"],
+label[for="myPage_phone"],
+label[for="myPage_birthday"],
+label[for="myPage_birthday"],
+label[for="myPage_sleepTime"],
+label[for="myPage_wakeupTime"] {
+  color: var(--reverseColor) !important;
+}
+
+.ant-btn {
+  background-color: var(--primary) !important;
+}
+
+.ivory-text {
+  color: var(--primary);
+}
+
 .roboto {
-  -webkit-text-stroke: 1px var(--lightbrown);
+  -webkit-text-stroke: 1px var(--secondarybrown);
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important
 }
 
 .transparent-layer {
-  background: linear-gradient(135deg, rgba(73,72,67,1) 0%, rgba(75,73,60,0.4) 100%);
+  background: linear-gradient(135deg, rgba(var(--transparentLinearStart)) 0%, rgba(var(--transparentLinearEnd)) 100%);
   border-radius: 4px;
 }
 
@@ -223,7 +260,7 @@ section {
 #customer .ant-collapse-header,
 #customer .ant-collapse .ant-collapse-content,
 #customer .ant-collapse {
-  color: var(--ivory) !important;
+  color: var(--reverseColor) !important;
 }
 
 button, [type='button'], [type='reset'], [type='submit'] {
@@ -240,7 +277,7 @@ img {
 }
 
 .ant-result-title {
-  color: var(--ivory) !important;
+  color: var(--primary) !important;
 }
 
 .ant-result-icon {
@@ -298,11 +335,11 @@ select:focus {
 }
 
 #language-selector div, #language-selector span {
-  color: var(--ivory) !important;
+  color: var(--reverseColor) !important;
 }
 
 #language-selector svg {
-  fill: var(--ivory) !important;
+  fill: var(--reverseColor) !important;
 }
 
 .ant-switch-inner-unchecked {
