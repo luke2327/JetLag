@@ -1,4 +1,5 @@
 import { AutoComplete, Input } from 'antd';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import cityMatching, { DestinationInfo } from '@/lib/cityMatching';
@@ -81,23 +82,27 @@ const App = ({
   type: 'depart' | 'arrive';
   setJourney: (type: 'arrive' | 'depart', point: DestinationInfo) => void;
   className?: string;
-}) => (
-  <AutoComplete
-    popupClassName='certain-category-search-dropdown'
-    // popupMatchSelectWidth={'100%'}
-    options={options}
-    onChange={(value) =>
-      setJourney(type, cityMatching(value) as DestinationInfo)
-    }
-    size='middle'
-    className={className}
-  >
-    <Input
-      className='text-center'
+}) => {
+  const t = useTranslations('service');
+
+  return (
+    <AutoComplete
+      popupClassName='certain-category-search-dropdown'
+      // popupMatchSelectWidth={'100%'}
+      options={options}
+      onChange={(value) =>
+        setJourney(type, cityMatching(value) as DestinationInfo)
+      }
       size='middle'
-      placeholder={type === 'depart' ? '출발지' : '도착지'}
-    />
-  </AutoComplete>
-);
+      className={className}
+    >
+      <Input
+        className='text-center'
+        size='middle'
+        placeholder={type === 'depart' ? t('departPoint') : t('arrivePoint')}
+      />
+    </AutoComplete>
+  );
+};
 
 export default App;

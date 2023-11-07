@@ -1,6 +1,7 @@
 import { Col, Collapse, Divider, Modal, Row, Typography } from 'antd';
 import { Dayjs } from 'dayjs';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import IntlLink from 'next-intl/link';
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
@@ -19,6 +20,7 @@ export default function RecommendSleep({
   isModalOpen: boolean;
   setModal: (x: boolean) => void;
 }) {
+  const t = useTranslations('service');
   const [collapseKey, setCollapseKey] = useState(1);
   const [cyclesSleep, setCyclesSleep] = useState<Cycles>([]);
   const [cyclesWakeup, setCyclesWakeup] = useState<Cycles>([]);
@@ -72,7 +74,7 @@ export default function RecommendSleep({
 
   return (
     <Modal
-      title='수면시간 추천'
+      title={t('sleepTime')}
       open={isModalOpen}
       onCancel={() => setModal(false)}
       footer={null}
@@ -90,7 +92,7 @@ export default function RecommendSleep({
           activeKey={collapseKey}
           onChange={collapseOnChange}
         >
-          <Collapse.Panel key={1} header='취침시간 추천'>
+          <Collapse.Panel key={1} header={t('sleepTime')}>
             {cyclesSleep.length ? (
               <>
                 <div className='flex flex-col pl-6'>
@@ -115,7 +117,7 @@ export default function RecommendSleep({
             ) : null}
           </Collapse.Panel>
 
-          <Collapse.Panel key={2} header='기상시간 추천'>
+          <Collapse.Panel key={2} header={t('wakeupTimeRecommend')}>
             {cyclesWakeup.length ? (
               <>
                 <div className='flex flex-col pl-6'>
@@ -148,7 +150,10 @@ export default function RecommendSleep({
 
       <Divider className='my-2' />
       <div>
-        마이페이지로 <Link href='/jetlag/myPage'>이동</Link>
+        {t('toMyPage')}{' '}
+        <IntlLink style={{ color: '#1677ff' }} href='/myPage'>
+          {t('move')}
+        </IntlLink>
       </div>
     </Modal>
   );

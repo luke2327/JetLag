@@ -1,4 +1,5 @@
 import { Button, Col, Divider, Modal, Row, Select, Typography } from 'antd';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import Balancer from 'react-wrap-balancer';
 
@@ -13,6 +14,8 @@ export default function CalcSleep({
   isModalOpen: boolean;
   setModal: (x: boolean) => void;
 }) {
+  const t = useTranslations('service');
+
   const [hour, setHour] = useState(1);
   const [minute, setMinute] = useState(0);
   const [ampm, setAmpm] = useState<'am' | 'pm'>('am');
@@ -93,7 +96,7 @@ export default function CalcSleep({
 
   return (
     <Modal
-      title='수면시간 계산기'
+      title={t('calculateSleepTime')}
       open={isModalOpen}
       onCancel={() => setModal(false)}
       footer={null}
@@ -107,7 +110,7 @@ export default function CalcSleep({
           <Col xs={24} sm={8}>
             <Select
               size='small'
-              placeholder='시간'
+              placeholder={t('hour')}
               value={hour}
               onChange={(value) => setHour(value)}
               className='xs:w-40 w-full text-center'
@@ -119,7 +122,7 @@ export default function CalcSleep({
           <Col xs={24} sm={8}>
             <Select
               size='small'
-              placeholder='분'
+              placeholder={t('minute')}
               value={minute}
               onChange={(value) => setMinute(value)}
               className='xs:w-40 w-full text-center'
@@ -154,7 +157,7 @@ export default function CalcSleep({
               className='xs:w-40 w-full'
               onClick={calculate}
             >
-              <Text>Calculate</Text>
+              <Text>{t('calculate')}</Text>
             </Button>
           </Col>
           <Col xs={24} sm={8}>
@@ -168,7 +171,7 @@ export default function CalcSleep({
               className='xs:w-40 w-full'
               onClick={sleepNow}
             >
-              <Text>Sleep now</Text>
+              <Text>{t('sleepNow')}</Text>
             </Button>
           </Col>
           <Col xs={24} sm={8}>
@@ -182,14 +185,16 @@ export default function CalcSleep({
               className='xs:w-40 w-full'
               onClick={checkAgain}
             >
-              <Text>Check again</Text>
+              <Text>{t('checkAgain')}</Text>
             </Button>
           </Col>
         </Row>
       </div>
       {cycles.length ? (
         <>
-          <Divider orientation='left'>Result</Divider>
+          <Divider orientation='left'>
+            <p className='w-[40px]'>{t('result')}</p>
+          </Divider>
           <div className='flex flex-col items-center justify-center'>
             <Row
               gutter={[16, 16]}
@@ -210,14 +215,8 @@ export default function CalcSleep({
                 </Col>
               ))}
             </Row>
-            <Balancer className='mt-2'>
-              Please keep in mind that you should be falling asleep at these
-              times.
-            </Balancer>
-            <Balancer>
-              The average human takes fourteen minutes to fall asleep, so plan
-              accordingly!
-            </Balancer>
+            <Balancer className='mt-2'>{t('calcSleepGuideMsg1')}</Balancer>
+            <Balancer>{t('calcSleepGuideMsg2')}</Balancer>
           </div>
         </>
       ) : null}

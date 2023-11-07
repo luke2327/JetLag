@@ -15,6 +15,7 @@ import { RangePickerProps } from 'antd/es/date-picker';
 import dayjs from 'dayjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MoveRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -44,6 +45,7 @@ export default function CalcFlight({
   isModalOpen: boolean;
   setModal: (x: boolean) => void;
 }) {
+  const t = useTranslations('service');
   const { POST } = useAxios();
   const [level, setLevel] = useState<1 | 2>(1);
   const [collapseKey, setCollapseKey] = useState(1);
@@ -136,7 +138,7 @@ export default function CalcFlight({
 
   return (
     <Modal
-      title='즐거운 여행을 위한 시차 수면 계산'
+      title={t('calcJetlagModalTitle')}
       open={isModalOpen}
       onCancel={() => setModal(false)}
       footer={null}
@@ -151,7 +153,7 @@ export default function CalcFlight({
           activeKey={collapseKey}
           onChange={collapseOnChange}
         >
-          <Collapse.Panel key={1} header='항공권 검색'>
+          <Collapse.Panel key={1} header={t('calcJetlagCollapse1')}>
             <div className='flex w-full flex-col items-start justify-center gap-2'>
               <Row gutter={[8, 8]} className='flex w-full items-center'>
                 <Col xs={24} sm={6}>
@@ -159,7 +161,7 @@ export default function CalcFlight({
                     disabledDate={disabledDate}
                     onChange={dateOnChange}
                     className='w-full'
-                    placeholder='출발일'
+                    placeholder={t('departDate')}
                   />
                 </Col>
                 <Col xs={24} sm={7}>
@@ -197,7 +199,7 @@ export default function CalcFlight({
                     }}
                     className='w-full whitespace-nowrap rounded-md !p-0'
                   >
-                    검색
+                    {t('search')}
                   </Button>
                 </Col>
               </Row>
@@ -205,7 +207,7 @@ export default function CalcFlight({
           </Collapse.Panel>
           <Collapse.Panel
             key={2}
-            header='항공권 리스트'
+            header={t('calcJetlagCollapse2')}
             disabled={!flightList.length}
           >
             {flightList.length || loadFlightList ? (
@@ -236,7 +238,7 @@ export default function CalcFlight({
           </Collapse.Panel>
           <Collapse.Panel
             key={3}
-            header='계산 상세'
+            header={t('calcJetlagCollapse3')}
             disabled={!selectedFlightInfo}
           >
             <FlightConfiguration
@@ -333,27 +335,23 @@ export default function CalcFlight({
             <Collapse ghost>
               <Collapse.Panel
                 key={1}
-                header='여행 피로도를 줄이기 위해서는'
+                header={t('resultGuideTitle')}
                 className='text-md font-bold'
               >
                 <Text strong className='pl-6'>
-                  비행 중:
+                  {t('duringRide')}
                 </Text>
                 <div className='pl-8 font-medium'>
-                  <Paragraph className='!mb-0'>
-                    - 차, 커피, 술보다 물 많이 마시기
-                  </Paragraph>
-                  <Paragraph className='!mb-0'>- 과일 먹기</Paragraph>
+                  <Paragraph className='!mb-0'>- {t('duringMsg1')}</Paragraph>
+                  <Paragraph className='!mb-0'>- {t('duringMsg2')}</Paragraph>
                 </div>
                 <Text strong className='pl-6'>
-                  도착 시:
+                  {t('arrived')}
                 </Text>
                 <div className='pl-8 font-light'>
-                  <Paragraph className='!mb-0'>- 물 많이 마시기</Paragraph>
-                  <Paragraph className='!mb-0'>- 샤워하기</Paragraph>
-                  <Paragraph className='!mb-0'>
-                    - 필요한 경우 20분간 낮잠 자기
-                  </Paragraph>
+                  <Paragraph className='!mb-0'>- {t('arrivedMsg1')}</Paragraph>
+                  <Paragraph className='!mb-0'>- {t('arrivedMsg2')}</Paragraph>
+                  <Paragraph className='!mb-0'>- {t('arrivedMsg3')}</Paragraph>
                 </div>
               </Collapse.Panel>
             </Collapse>
@@ -371,7 +369,7 @@ export default function CalcFlight({
               className='w-full whitespace-nowrap rounded-md'
               onClick={() => setLevel(1)}
             >
-              이전
+              {t('previous')}
             </Button>
           </div>
         </div>

@@ -13,6 +13,7 @@ import {
 import { Dayjs } from 'dayjs';
 import { PlaneLanding, PlaneTakeoff } from 'lucide-react';
 import moment from 'moment-timezone';
+import { useTranslations } from 'next-intl';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
@@ -55,6 +56,7 @@ export default function FlightConfiguration({
   journeyInfo,
   dispatchLevel,
 }: IFlightRecommend) {
+  const t = useTranslations('service');
   const { depart, arrive } = journeyInfo;
   const user = useRecoilValue(userState);
   const [loading, setLoading] = useState(false);
@@ -105,7 +107,7 @@ export default function FlightConfiguration({
       {contextHolder}
       <Row gutter={[4, 4]}>
         <Col xs={24} sm={8}>
-          <Paragraph className='!mb-0'>시차</Paragraph>
+          <Paragraph className='!mb-0'>{t('timeDifference')}</Paragraph>
           <Input
             size='small'
             disabled
@@ -114,7 +116,7 @@ export default function FlightConfiguration({
           ></Input>
         </Col>
         <Col xs={12} sm={8}>
-          <Paragraph className='!mb-0'>취침시간</Paragraph>
+          <Paragraph className='!mb-0'>{t('sleepTimeD')}</Paragraph>
           <TimePicker
             showNow={false}
             minuteStep={30}
@@ -133,7 +135,7 @@ export default function FlightConfiguration({
           />
         </Col>
         <Col xs={12} sm={8}>
-          <Paragraph className='!mb-0'>기상시간</Paragraph>
+          <Paragraph className='!mb-0'>{t('wakeupTimeD')}</Paragraph>
           <TimePicker
             showNow={false}
             minuteStep={30}
@@ -154,14 +156,14 @@ export default function FlightConfiguration({
       </Row>
       <Row gutter={[8, 8]} className='mt-2'>
         <Col xs={24} sm={12}>
-          <Text>출발</Text>
+          <Text>{t('departD')}</Text>
           <div className='flex items-center gap-2'>
             <PlaneTakeoff strokeWidth={siteConfig.lucideStrokeWidth} />
             <Text>{flightInfo.departDateTime.toString()}</Text>
           </div>
         </Col>
         <Col xs={24} sm={12}>
-          <Text>도착</Text>
+          <Text>{t('arriveD')}</Text>
           <div className='flex items-center gap-2'>
             <PlaneLanding strokeWidth={siteConfig.lucideStrokeWidth} />
             <Text>{flightInfo.arriveDateTime.toString()}</Text>
@@ -170,7 +172,7 @@ export default function FlightConfiguration({
       </Row>
       <Row gutter={[8, 2]} className='mt-2'>
         <Col xs={24}>
-          시차적응을 위한 날짜 조정
+          {t('guideMsg1D')}
           <InputNumber
             min={0}
             max={10}
@@ -183,7 +185,7 @@ export default function FlightConfiguration({
               setFlight({ ...flight, daysbefore: val as number })
             }
           />
-          일 후 탑승
+          {t('toRideD')}
         </Col>
       </Row>
       <Row className='mt-2'>
@@ -198,7 +200,7 @@ export default function FlightConfiguration({
           className='w-full whitespace-nowrap rounded-md'
           loading={loading}
         >
-          계산
+          {t('calculate')}
         </Button>
       </Row>
     </div>
