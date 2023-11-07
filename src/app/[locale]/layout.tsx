@@ -1,9 +1,13 @@
 'use client';
 
 import { ConfigProvider, message } from 'antd';
+import { Locale } from 'antd/es/locale';
+import en from 'antd/lib/locale/en_US';
+import ja from 'antd/lib/locale/ja_JP';
+import ko from 'antd/lib/locale/ko_KR';
 import { notFound } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
+import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl';
 import { ReactNode, useEffect, useState } from 'react';
 import * as React from 'react';
 import { Provider } from 'react-wrap-balancer';
@@ -21,9 +25,7 @@ import { authState } from '@/store/auth';
 
 import { Credential } from '@/interface/auth';
 
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'de' }];
-}
+const locales = { en, ko, ja };
 
 // default page
 
@@ -32,17 +34,19 @@ export default function AppLayout({
   children,
   params: { locale },
 }: React.PropsWithChildren & { params: any }) {
-  const [messages, setMessages] = useState<any>();
-
-  console.log(locale);
+  const [messages, setMessages] = useState<AbstractIntlMessages>();
+  const [antdLocale, setAntdLocale] = useState<Locale>();
 
   useEffect(() => {
     try {
-      import(`../../messages/${locale}.json`).then((e) => setMessages(e));
+      import(`../../messages/${locale}.json`).then((e: AbstractIntlMessages) =>
+        setMessages(e)
+      );
     } catch (error) {
-      console.log(error);
       notFound();
     }
+
+    setAntdLocale(locales[locale as keyof typeof locales]);
   }, []);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -53,6 +57,7 @@ export default function AppLayout({
       {messages ? (
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ConfigProvider
+            locale={antdLocale}
             theme={{
               token: {
                 colorPrimary: '#d0c79b',

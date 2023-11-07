@@ -26,12 +26,12 @@ export const metadata: Metadata = {
     initialScale: 1,
     maximumScale: 1,
   },
-  colorScheme: 'dark',
+  colorScheme: 'light',
 };
 
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   return (
-    <html lang='en'>
+    <html>
       <body className={inter.className}>{children}</body>
     </html>
   );

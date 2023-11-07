@@ -102,7 +102,7 @@ function AuthProvider({
         content: (res as NetworkError).message || 'Login session was expired.',
       });
 
-      route.push('/jetlag');
+      route.push('/');
     }
 
     setLoading(false);
