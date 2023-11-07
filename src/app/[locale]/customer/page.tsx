@@ -35,9 +35,9 @@ export default function CustomerPage() {
       id='customer'
       className='layout relative flex w-full justify-center p-2'
     >
-      <EaseOut className='flex w-full max-w-[1200px] flex-col justify-center'>
+      <EaseOut className='flex w-full max-w-[1000px] flex-col justify-center'>
         <TransparentLayer>
-          <Title level={3} className='!mb-0 text-center !text-white'>
+          <Title level={3} className='text-reverse-color !mb-0 text-center'>
             {t('customerCenter')}
           </Title>
           <Collapse
@@ -46,7 +46,6 @@ export default function CustomerPage() {
             defaultActiveKey={['1']}
             ghost
             items={items(locale)}
-            style={{ color: 'var(--ivory)' }}
           />
         </TransparentLayer>
       </EaseOut>

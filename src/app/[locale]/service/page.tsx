@@ -95,12 +95,7 @@ function AccentButton({
       }}
     >
       <Button
-        style={{
-          color: 'var(--textbrown)',
-          backgroundColor: 'rgb(255, 253, 243)',
-          border: '1px solid #c0c0c0',
-        }}
-        className='w-full whitespace-nowrap rounded-md'
+        className='w-full whitespace-nowrap'
         onClick={() => onClickFn && onClickFn(true)}
       >
         {title}

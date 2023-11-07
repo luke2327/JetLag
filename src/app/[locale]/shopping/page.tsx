@@ -20,7 +20,7 @@ export default function ShoppingPage() {
     >
       <EaseOut className='flex flex-col justify-center'>
         <TransparentLayer>
-          <Title level={3} className='!mb-0 text-center !text-white'>
+          <Title level={3} className='text-reverse-color !mb-0 text-center'>
             Shopping
           </Title>
           <div className='mt-6 flex max-h-[70vh] flex-wrap items-center justify-center gap-6 overflow-x-hidden overflow-y-scroll'>

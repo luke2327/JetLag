@@ -55,7 +55,7 @@ export default function SignupPage() {
       <EaseOut className='flex w-full max-w-[400px] flex-col justify-center'>
         <TransparentLayer>
           {level === 1 && (
-            <Title level={3} className='!mb-0 text-center !text-white'>
+            <Title level={3} className='text-reverse-color !mb-0 text-center'>
               Signup Jetlag
             </Title>
           )}
@@ -100,7 +100,7 @@ export default function SignupPage() {
                   type='primary'
                   htmlType='submit'
                   style={{
-                    color: 'var(--textbrown)',
+                    color: 'var(--textPrimary)',
                     backgroundColor: 'rgb(255, 253, 243)',
                   }}
                   className='w-full whitespace-nowrap rounded-md'
@@ -128,7 +128,7 @@ export default function SignupPage() {
               icon={
                 <Check
                   strokeWidth={siteConfig.lucideStrokeWidth}
-                  color='var(--ivory)'
+                  color='var(--primary)'
                   size={72}
                 />
               }
@@ -137,7 +137,7 @@ export default function SignupPage() {
                   type='primary'
                   key='console'
                   style={{
-                    color: 'var(--textbrown)',
+                    color: 'var(--textPrimary)',
                     backgroundColor: 'rgb(255, 253, 243)',
                     border: '1px solid #c0c0c0',
                   }}

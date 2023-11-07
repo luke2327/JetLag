@@ -99,7 +99,7 @@ export default function MyPage() {
       {!blockingLoading && (
         <EaseOut className='flex w-full max-w-[600px] flex-col justify-center'>
           <TransparentLayer>
-            <Title level={3} className='!mb-0 text-center !text-white'>
+            <Title level={3} className='text-reverse-color !mb-0 text-center'>
               {t('title')}
             </Title>
             <Form
@@ -156,7 +156,7 @@ export default function MyPage() {
                   type='primary'
                   htmlType='submit'
                   style={{
-                    color: 'var(--textbrown)',
+                    color: 'var(--textPrimary)',
                     backgroundColor: 'rgb(255, 253, 243)',
                   }}
                   className='max-w-[100px] whitespace-nowrap rounded-md'
