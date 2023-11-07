@@ -8,5 +8,58 @@
     "login": "ログイン",
     "logout": "ログアウト"
   },
-  "service": ""
+  "service": {
+    "title": "Jetlagサービス",
+    "calculateSleepTime": "睡眠時間計算",
+    "calculateJatlag": "Jetlag計算",
+    "sleepTime": "睡眠時間おすすめ",
+    "sleepTimeRecommend": "睡眠時間おすすめ",
+    "wakeupTimeRecommend": "起床時間おすすめ",
+    "calculate": "計算",
+    "sleepNow": "今すぐ寝たい",
+    "checkAgain": "再計算",
+    "toMyPage": "マイページに",
+    "move": "移動",
+    "hour": "時",
+    "minute": "分",
+    "result": "結果",
+    "calcSleepGuideMsg1": "この時間は寝ているはずですので、ご注意ください。",
+    "calcSleepGuideMsg2": "平均的な人間は眠るのに14分かかるので、それに合わせて計画を立てましょう！",
+
+    "calcJetlagModalTitle": "楽しい旅行のための時差睡眠計算",
+    "departDate": "出発日",
+    "departPoint": "出発地",
+    "arrivePoint": "到着地",
+    "search": "検索",
+    "calcJetlagCollapse1": "航空券検索",
+    "calcJetlagCollapse2": "航空券リスト",
+    "calcJetlagCollapse3": "計算詳細",
+    "timeDifference": "時差",
+
+    "sleepTimeD": "睡眠時間",
+    "wakeupTimeD": "起床時間",
+    "departD": "出発",
+    "arriveD": "到着",
+    "guideMsg1D": "時差適応のための日付調整",
+    "toRideD": "日後搭乗",
+
+    "resultGuideTitle": "旅の疲れを軽減するためには",
+    "duringRide": "飛行中:",
+    "duringMsg1": "お茶、コーヒー、お酒より水をたくさん飲む",
+    "duringMsg2" : "果物を食べる",
+    "arrived": "到着時:",
+    "arrivedMsg1": "水をたくさん飲む",
+    "arrivedMsg2": "シャワーする",
+    "arrivedMsg3":"必要な場合は20分間昼寝をする",
+    "previous": "移転"
+  },
+  "myPage": {
+    "title": "マイページ",
+    "email": "E-メール",
+    "age": "年齢",
+    "phone": "電話番号",
+    "birthday": "誕生日",
+    "sleepTime": "睡眠時間",
+    "wakeupTime": "起床時間"
+  }
 }

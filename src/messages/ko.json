@@ -8,5 +8,58 @@
     "login": "Login",
     "logout": "Logout"
   },
-  "service": ""
+  "service": {
+    "title": "Jet Lag Service",
+    "sleepCalculator": "취침시간 추천",
+    "calculateSleepTime": "취침시간 계산",
+    "calculateJatlag": "Jetlag 계산",
+    "sleepTime": "취침시간",
+    "wakeupTime": "기상시간",
+    "calculate": "계산",
+    "sleepNow": "현재시간으로 계산",
+    "checkAgain": "다시 계산",
+    "toMyPage": "마이페이지로",
+    "move": "이동",
+    "hour": "시",
+    "minute": "분",
+    "result": "결과",
+    "calcSleepGuideMsg1": "이 시간대에 잠을 자야하는것을 기억해두세요.",
+    "calcSleepGuideMsg2": "보통 사람은 잠들기까지 14분이 걸리므로, 그에 따라 계획을 세우십시오.",
+
+    "calcJetlagModalTitle": "즐거운 여행을 위한 시차 수면 계산",
+    "departDate": "출발일",
+    "departPoint": "출발지",
+    "arrivePoint": "도착지",
+    "search": "검색",
+    "calcJetlagCollapse1": "항공권 검색",
+    "calcJetlagCollapse2": "항공권 리스트",
+    "calcJetlagCollapse3": "계산 상세",
+    "timeDifference": "시차",
+
+    "sleepTimeD": "취침시간",
+    "wakeupTimeD": "기상시간",
+    "departD": "출발",
+    "arriveD": "도착",
+    "guideMsg1D": "시차적응을 위한 날짜 조정",
+    "toRideD": "일 후 탑승",
+
+    "resultGuideTitle": "여행 피로도를 줄이기 위해서는",
+    "duringRide": "비행 중",
+    "duringMsg1": "차, 커피, 술보다 물 많이 마시기",
+    "duringMsg2" : "과일 먹기",
+    "arrived": "도착 시:",
+    "arrivedMsg1": "물 많이 마시기",
+    "arrivedMsg2": "샤워하기",
+    "arrivedMsg3": "필요한 경우 20분간 낮잠 자기",
+    "previous": "이전"
+  },
+  "myPage": {
+    "title": "My Page",
+    "email": "Email",
+    "age": "Age",
+    "phone": "Phone",
+    "birthday": "Birthday",
+    "sleepTime": "Sleep time",
+    "wakeupTime": "Wakeup time"
+  }
 }

@@ -13,8 +13,18 @@
     "sleepCalculator": "Sleep calculator",
     "calculateSleepTime": "Calculate sleep time",
     "calculateJatlag": "Calculate Jatlag",
+    "sleepTime": "",
     "calculate": "Calculate",
     "sleepNow": "Sleep Now",
     "checkAgain": "Check Again"
+  },
+  "myPage": {
+    "title": "My Page",
+    "email": "Email",
+    "age": "Age",
+    "phone": "Phone",
+    "birthday": "Birthday",
+    "sleepTime": "Sleep time",
+    "wakeupTime": "Wakeup time"
   }
 }
