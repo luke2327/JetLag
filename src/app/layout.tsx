@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: 'Jetlag',
   description: 'Jetlag',
   openGraph: {
-    images: ['/icon-512x512.png'],
+    images: ['/jetlag.png'],
   },
   icons: {
-    icon: '/icon-192x192.png',
-    shortcut: '/icon-192x192.png',
-    apple: '/icon-192x192.png',
+    icon: '/jetlag.png',
+    shortcut: '/jetlag.png',
+    apple: '/jetlag.png',
   },
   themeColor: '#494336',
   viewport: {
