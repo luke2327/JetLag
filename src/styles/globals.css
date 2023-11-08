@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  /* #region  /**=========== Primary Color =========== */
+  /* #region  !**=========== Primary Color =========== */
   /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
   --tw-color-primary-50: 240 249 255;
   --tw-color-primary-100: 224 242 254;
@@ -25,7 +25,7 @@
   --color-primary-700: rgb(var(--tw-color-primary-700)); /* #0369a1 */
   --color-primary-800: rgb(var(--tw-color-primary-800)); /* #075985 */
   --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0c4a6e */
-  /* #endregion  /**======== Primary Color =========== */
+  /* #endregion  !**======== Primary Color =========== */
 }
 
 :root.light {
@@ -37,10 +37,11 @@
   --reverseColor: #494336;
   --transparentLinearStart: 231,229,219,1;
   --transparentLinearEnd: 230,220,200,0.4;
+  --bgUrl: url('/images/light-bg1.png');
 }
 
 :root.dark {
-  --primary: #494336;
+  --primary: #2f3044;
   --linearStart: #6b6965;
   --secondary: #9e9581;
   --secondarybrown: #494336;
@@ -48,6 +49,7 @@
   --reverseColor: #F8F5E3;
   --transparentLinearStart: 73,72,67,1;
   --transparentLinearEnd: 75,73,60,0.4;
+  --bgUrl: url('/images/dark-bg2.jpeg');
 }
 
 @layer base {
@@ -67,7 +69,7 @@
     cursor: url('/images/new-tab.png') 10 10, pointer;
   }
 
-  /* #region  /**=========== Typography =========== */
+  /* #region  !**=========== Typography =========== */
   .h0 {
     @apply font-primary text-3xl font-bold md:text-5xl;
   }
@@ -96,7 +98,7 @@
   .p {
     @apply font-primary text-sm md:text-base;
   }
-  /* #endregion  /**======== Typography =========== */
+  /* #endregion  !**======== Typography =========== */
 
   .layout {
     /* 1100px */
@@ -153,7 +155,7 @@
 }
 
 .bg-clock {
-  background-image: url('/images/clock.png');
+  background-image: var(--bgUrl);
 }
 
 header {
@@ -184,6 +186,7 @@ label[for="myPage_wakeupTime"] {
 
 .ant-btn {
   background-color: var(--primary) !important;
+  border: none !important;
 }
 
 .ivory-text {
@@ -289,7 +292,7 @@ img {
 
 h1, h2, h3, h4, h5, h6, strong, input, span, a, p, legend, fieldset, label, table, th, td, tr, li, ul, ol {
   text-wrap: balance !important;
-  transition: all .1s
+  transition: color, background-color, opacity .1s
 }
 
 [type='text']:focus,
@@ -324,6 +327,10 @@ select:focus {
 
   .\!xs\:w-auto > div {
     padding: 0 !important;
+  }
+
+  .auth-title {
+    margin-bottom: 1rem !important;
   }
 }
 

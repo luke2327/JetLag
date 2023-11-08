@@ -62,7 +62,19 @@
     "arrivedMsg1": "水をたくさん飲む",
     "arrivedMsg2": "シャワーする",
     "arrivedMsg3":"必要な場合は20分間昼寝をする",
-    "previous": "移転"
+    "previous": "移転",
+
+    "calcCycle1": "３サイクル - ４時間半の睡眠",
+    "calcCycle2": "４サイクル - ６時間の睡眠",
+    "calcCycle3": "５サイクル - ７時間半の睡眠",
+    "calcCycle4": "６サイクル - ９時間の睡眠",
+
+    "sleepNowCycle1": "１サイクル - １時間半の睡眠",
+    "sleepNowCycle2": "２サイクル - ３時間の睡眠",
+    "sleepNowCycle3": "３サイクル - ４時間半の睡眠",
+    "sleepNowCycle4": "４サイクル - ６時間の睡眠",
+    "sleepNowCycle5": "５サイクル - ７時間半の睡眠",
+    "sleepNowCycle6": "６サイクル - ９時間の睡眠"
   },
   "myPage": {
     "title": "マイページ",

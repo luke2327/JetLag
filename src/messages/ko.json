@@ -21,8 +21,8 @@
   },
   "service": {
     "title": "Jet Lag Service",
-    "sleepCalculator": "취침시간 추천",
-    "calculateSleepTime": "취침시간 계산",
+    "wakeupTimeRecommend": "취침시간 추천",
+    "calculateSleepTime": "기상시간 계산",
     "calculateJatlag": "Jetlag 계산",
     "sleepTime": "취침시간",
     "wakeupTime": "기상시간",
@@ -62,7 +62,19 @@
     "arrivedMsg1": "물 많이 마시기",
     "arrivedMsg2": "샤워하기",
     "arrivedMsg3": "필요한 경우 20분간 낮잠 자기",
-    "previous": "이전"
+    "previous": "이전",
+
+    "calcCycle1": "3 사이클 - 4시간 30분 수면",
+    "calcCycle2": "4 사이클 - 6시간 수면",
+    "calcCycle3": "5 사이클 - 7시간 30분 수면",
+    "calcCycle4": "6 사이클 - 9시간 수면",
+
+    "sleepNowCycle1": "1사이클 - 1시간 30분 수면",
+    "sleepNowCycle2": "2사이클 - 3시간 수면",
+    "sleepNowCycle3": "3사이클 - 4시간 30분 수면",
+    "sleepNowCycle4": "4사이클 - 6시간 수면",
+    "sleepNowCycle5": "5사이클 - 7시간 30분 수면",
+    "sleepNowCycle6": "6사이클 - 9시간 수면"
   },
   "myPage": {
     "title": "My Page",

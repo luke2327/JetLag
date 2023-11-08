@@ -37,20 +37,20 @@ export default function CalcSleep({
     const temp: { date: Date; label: string }[] = [];
 
     temp.push({
-      date: new Date(time.getTime() - 270 * 60000),
-      label: 'For Three Cycles - Four and a half Hours of Sleep.',
+      date: new Date(time.getTime() + 270 * 60000),
+      label: t('calcCycle1'),
     });
     temp.push({
-      date: new Date(temp[0].date.getTime() - 270 * 60000),
-      label: 'For Four Cycles - Six Hours of Sleep.',
+      date: new Date(temp[0].date.getTime() + 90 * 60000),
+      label: t('calcCycle2'),
     });
     temp.push({
-      date: new Date(temp[1].date.getTime() - 270 * 60000),
-      label: 'For Five Cycles - Seven and a half Hours of Sleep.',
+      date: new Date(temp[1].date.getTime() + 90 * 60000),
+      label: t('calcCycle3'),
     });
     temp.push({
-      date: new Date(temp[2].date.getTime() - 270 * 60000),
-      label: 'For Six Cycles - Nine Hours of Sleep.',
+      date: new Date(temp[2].date.getTime() + 90 * 60000),
+      label: t('calcCycle4'),
     });
 
     setCycles(temp);
@@ -61,27 +61,27 @@ export default function CalcSleep({
 
     temp.push({
       date: new Date(new Date().getTime() + 104 * 60000),
-      label: 'For One Cycle - One and a half Hours of Sleep.',
+      label: t('sleepNowCycle1'),
     });
     temp.push({
       date: new Date(temp[0].date.getTime() + 90 * 60000),
-      label: 'For Two Cycles - Three Hours of Sleep.',
+      label: t('sleepNowCycle2'),
     });
     temp.push({
       date: new Date(temp[1].date.getTime() + 90 * 60000),
-      label: 'For Three Cycles - Four and a half Hours of Sleep.',
+      label: t('sleepNowCycle3'),
     });
     temp.push({
       date: new Date(temp[2].date.getTime() + 90 * 60000),
-      label: 'For Four Cycles - Six Hours of Sleep.',
+      label: t('sleepNowCycle4'),
     });
     temp.push({
       date: new Date(temp[3].date.getTime() + 90 * 60000),
-      label: 'For Five Cycles: Seven and a half Hours of Sleep.',
+      label: t('sleepNowCycle5'),
     });
     temp.push({
       date: new Date(temp[4].date.getTime() + 90 * 60000),
-      label: 'For Six Cycles - Nine Hours of Sleep.',
+      label: t('sleepNowCycle6'),
     });
 
     setCycles(temp);
@@ -183,11 +183,11 @@ export default function CalcSleep({
           <div className='flex flex-col items-center justify-center'>
             <Row
               gutter={[16, 16]}
-              className='flex flex-col items-start justify-center'
+              className='flex w-full flex-col items-start justify-center'
             >
               {cycles.map((cycle, i) => (
-                <Col key={i} xs={24}>
-                  <Row gutter={[8, 8]}>
+                <Col key={i} xs={24} className='w-full'>
+                  <Row gutter={[8, 8]} className='w-full'>
                     <Col xs={24} sm={8} className='xs:text-right text-left'>
                       <Title level={5} className='!mb-0'>
                         {sleepDate(cycle.date)}
