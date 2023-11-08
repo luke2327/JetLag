@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import backgroundClock from 'public/images/clock.png';
+import backgroundDark1 from 'public/images/dark-bg1.jpeg';
 import * as React from 'react';
 
-export default function BackgroundClock({
+export default function Background({
   children,
 }: {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ export default function BackgroundClock({
   return (
     <main
       className='bg-clock h-full min-h-screen w-full bg-cover bg-no-repeat'
-      style={{ backgroundImage: `src(${backgroundClock.src})` }}
+      style={{ backgroundImage: `src(${backgroundDark1.src})` }}
     >
       <Head>
         <title>Jetlag</title>

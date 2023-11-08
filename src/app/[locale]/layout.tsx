@@ -17,7 +17,7 @@ import StyledComponentsRegistry from '@/lib/AntdRegistry';
 import { toDayJs } from '@/lib/helper';
 import useAxios, { NetworkError } from '@/hooks/axios';
 
-import BackgroundClock from '@/components/layout/BackgroundClock';
+import Background from '@/components/layout/Background';
 import Header from '@/components/layout/Header';
 import EaseOut from '@/components/motion/EaseOut';
 
@@ -78,7 +78,7 @@ export default function AppLayout({
             }}
           >
             <StyledComponentsRegistry>
-              <BackgroundClock>
+              <Background>
                 <Header />
                 <Provider>
                   <AuthProvider setLoading={setLoading}>
@@ -91,7 +91,7 @@ export default function AppLayout({
                     </EaseOut>
                   </AuthProvider>
                 </Provider>
-              </BackgroundClock>
+              </Background>
             </StyledComponentsRegistry>
           </ConfigProvider>
         </NextIntlClientProvider>
