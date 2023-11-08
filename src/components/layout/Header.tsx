@@ -1,14 +1,16 @@
 'use client';
 
-import { Divider, Drawer, Select, Switch } from 'antd';
+import { Divider, Drawer } from 'antd';
 import { deleteCookie } from 'cookies-next';
-import { Home, Menu, Moon, Sun } from 'lucide-react';
-// import { useRouter } from 'next/navigation';
-import { useLocale, useTranslations } from 'next-intl';
-import { usePathname, useRouter } from 'next-intl/client';
+import { Home, Menu } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next-intl/client';
 import IntlLink from 'next-intl/link';
 import { useState } from 'react';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
+
+import LanguageSwitch from '@/components/layout/LanguageSwitch';
+import ThemeSwitch from '@/components/layout/ThemeSwitch';
 
 import { authState } from '@/store/auth';
 import { flightResultState, flightState } from '@/store/flight';
@@ -16,8 +18,6 @@ import { flightResultState, flightState } from '@/store/flight';
 import { siteConfig } from '@/constant/config';
 
 export default function Header() {
-  const locale = useLocale();
-  const pathname = usePathname();
   const t = useTranslations('common');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const route = useRouter();
@@ -41,20 +41,6 @@ export default function Header() {
   };
   const onCloseDrawer = () => {
     setDrawerOpen(false);
-  };
-  const languageChange = (locale: string) => {
-    route.replace(pathname, { locale });
-  };
-  const themeChange = (value: boolean) => {
-    if (value) {
-      document.documentElement.classList.remove('light');
-      document.documentElement.classList.add('dark');
-      window.localStorage.setItem('mode', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-      window.localStorage.setItem('mode', 'light');
-    }
   };
 
   return (
@@ -95,7 +81,11 @@ export default function Header() {
           </li>
           {auth.status === 'login' ? (
             <li>
-              <IntlLink className='text-reverse-color' href='/login' onClick={logout}>
+              <IntlLink
+                className='text-reverse-color'
+                href='/login'
+                onClick={logout}
+              >
                 {t('logout')}
               </IntlLink>
             </li>
@@ -108,28 +98,8 @@ export default function Header() {
           )}
         </ul>
         <div id='language-selector' className='flex items-center'>
-          <Select
-            size='small'
-            bordered={false}
-            defaultValue={locale}
-            onChange={languageChange}
-            className='w-[84px]'
-            options={[
-              { value: 'en', label: 'English' },
-              { value: 'ko', label: '한국어' },
-              { value: 'ja', label: '日本語' },
-            ]}
-          ></Select>
-          <Switch
-            className='mr-2'
-            onChange={themeChange}
-            checkedChildren={
-              <Moon strokeWidth={siteConfig.lucideStrokeWidth} size={16} />
-            }
-            unCheckedChildren={
-              <Sun strokeWidth={siteConfig.lucideStrokeWidth} size={16} />
-            }
-          />
+          <LanguageSwitch />
+          <ThemeSwitch />
         </div>
       </div>
       <div id='nav-button' style={{ display: 'none' }} className='w-full'>
@@ -158,7 +128,7 @@ export default function Header() {
         open={drawerOpen}
         key='drawer-menu'
         width='50vw'
-        style={{ backgroundColor: 'var(--primary)' }}
+        style={{ backgroundColor: 'var(--primary)', minWidth: 180 }}
       >
         {auth.status === 'login' ? (
           <div>
@@ -207,6 +177,11 @@ export default function Header() {
             </li>
           )}
         </ul>
+        <Divider className='my-2' />
+        <div className='flex justify-between'>
+          <LanguageSwitch />
+          <ThemeSwitch />
+        </div>
       </Drawer>
     </header>
   );

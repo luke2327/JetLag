@@ -24,7 +24,7 @@ export default function RecommendSleep({
   const [collapseKey, setCollapseKey] = useState(1);
   const [cyclesSleep, setCyclesSleep] = useState<Cycles>([]);
   const [cyclesWakeup, setCyclesWakeup] = useState<Cycles>([]);
-  const user = useRecoilValue(userState);
+  const user = useRecoilValue(userState) || {};
 
   const calculate = (type: 'sleepTime' | 'wakeupTime') => {
     if (!user[type]) {
@@ -82,7 +82,6 @@ export default function RecommendSleep({
       className='!max-w-[600px] !p-2'
     >
       <Divider className='mt-0' />
-      <div></div>
       {user.sleepTime && user.wakeupTime ? (
         <Collapse
           accordion
