@@ -10,8 +10,8 @@ import {
   TimePicker,
   Typography,
 } from 'antd';
-import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next-intl/client';
 import { useEffect, useState } from 'react';
 import { SetterOrUpdater, useRecoilState } from 'recoil';
 

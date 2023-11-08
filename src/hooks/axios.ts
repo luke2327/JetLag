@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { deleteCookie } from 'cookies-next';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next-intl/client';
 import { useResetRecoilState } from 'recoil';
 
 import logger from '@/lib/logger';

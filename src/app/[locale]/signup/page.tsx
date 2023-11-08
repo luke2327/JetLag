@@ -2,7 +2,8 @@
 
 import { Button, Form, Input, message, Result, Typography } from 'antd';
 import { Check } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next-intl/client';
 import IntlLink from 'next-intl/link';
 import { useState } from 'react';
 
@@ -23,6 +24,7 @@ type FieldType = {
 };
 
 export default function SignupPage() {
+  const t = useTranslations('login');
   const route = useRouter();
   const { POST } = useAxios();
   const [level, setLevel] = useState(1);
@@ -56,7 +58,7 @@ export default function SignupPage() {
         <TransparentLayer>
           {level === 1 && (
             <Title level={3} className='text-reverse-color !mb-0 text-center'>
-              Signup Jetlag
+              {t('signup')}
             </Title>
           )}
           {level === 1 && (
@@ -73,7 +75,7 @@ export default function SignupPage() {
             >
               <div>
                 <Form.Item<FieldType>
-                  label='Email'
+                  label={t('email')}
                   name='email'
                   rules={[
                     { required: true, message: 'Please input your username!' },
@@ -84,7 +86,7 @@ export default function SignupPage() {
 
                 <Form.Item<FieldType>
                   className='text-white'
-                  label='Password'
+                  label={t('password')}
                   name='password'
                   rules={[
                     { required: true, message: 'Please input your password!' },
@@ -105,17 +107,17 @@ export default function SignupPage() {
                   }}
                   className='w-full whitespace-nowrap rounded-md'
                 >
-                  Signup
+                  {t('signup')}
                 </Button>
               </div>
               <div className='mt-4 flex items-center justify-center'>
                 <Text>
-                  Already member?{' '}
+                  {t('alreadyMember')}{' '}
                   <IntlLink
                     href='/login'
                     style={{ color: 'rgb(255, 253, 243)' }}
                   >
-                    Login now
+                    {t('loginNow')}
                   </IntlLink>
                 </Text>
               </div>
@@ -147,7 +149,7 @@ export default function SignupPage() {
                     route.push('/login');
                   }}
                 >
-                  Go Login
+                  {t('goLogin')}
                 </Button>,
               ]}
             />

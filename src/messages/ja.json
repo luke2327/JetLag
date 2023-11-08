@@ -8,6 +8,17 @@
     "login": "ログイン",
     "logout": "ログアウト"
   },
+  "login": {
+    "login": "ログイン",
+    "signup": "アカウントを作成",
+    "email": "メール",
+    "password": "暗証番号",
+    "notAMember": "初めてご利用ですか?",
+    "signupNow": "新規登録はこちら",
+    "alreadyMember": "既にアカウントをお持ちですか？",
+    "loginNow": "ログインページへ",
+    "goLogin": "ログインページへ"
+  },
   "service": {
     "title": "Jetlagサービス",
     "calculateSleepTime": "睡眠時間計算",
@@ -55,7 +66,7 @@
   },
   "myPage": {
     "title": "マイページ",
-    "email": "E-メール",
+    "email": "メール",
     "age": "年齢",
     "phone": "電話番号",
     "birthday": "誕生日",

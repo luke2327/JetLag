@@ -1,12 +1,23 @@
 {
   "common": {
     "title": "Jetlag",
-    "service": "Service",
-    "shopping": "Shopping",
-    "customerCenter": "Customer Center",
-    "myPage": "My Page",
+    "service": "서비스",
+    "shopping": "쇼핑",
+    "customerCenter": "고객센터",
+    "myPage": "내 정보",
+    "login": "로그인",
+    "logout": "로그아웃"
+  },
+  "login": {
     "login": "Login",
-    "logout": "Logout"
+    "signup": "Signup",
+    "email": "Email",
+    "password": "Password",
+    "notAMember": "Not a member?",
+    "signupNow": "sign up now",
+    "alreadyMember": "Already member？",
+    "loginNow": "login now",
+    "goLogin": "로그인페이지로 이동"
   },
   "service": {
     "title": "Jet Lag Service",

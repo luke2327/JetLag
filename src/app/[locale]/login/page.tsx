@@ -2,7 +2,8 @@
 
 import { Button, Form, Input, message, Typography } from 'antd';
 import { setCookie } from 'cookies-next';
-import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next-intl/client';
 import IntlLink from 'next-intl/link';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -27,6 +28,7 @@ type FieldType = {
 };
 
 export default function LoginPage() {
+  const t = useTranslations('login');
   const route = useRouter();
   const { POST } = useAxios();
   const [messageApi, contextHolder] = message.useMessage();
@@ -90,7 +92,7 @@ export default function LoginPage() {
         <EaseOut className='flex w-full max-w-[400px] flex-col justify-center'>
           <TransparentLayer>
             <Title level={3} className='text-reverse-color !mb-0 text-center'>
-              Login Jetlag
+              {t('login')}
             </Title>
             <Form
               name='authenticate'
@@ -105,7 +107,7 @@ export default function LoginPage() {
             >
               <div>
                 <Form.Item<FieldType>
-                  label='Email'
+                  label={t('email')}
                   name='email'
                   rules={[
                     { required: true, message: 'Please input your username!' },
@@ -116,7 +118,7 @@ export default function LoginPage() {
 
                 <Form.Item<FieldType>
                   className='text-white'
-                  label='Password'
+                  label={t('password')}
                   name='password'
                   rules={[
                     { required: true, message: 'Please input your password!' },
@@ -138,17 +140,17 @@ export default function LoginPage() {
                   }}
                   className='w-full whitespace-nowrap rounded-md'
                 >
-                  Login
+                  {t('login')}
                 </Button>
               </div>
               <div className='mt-4 flex items-center justify-center'>
                 <Text>
-                  Not a member?{' '}
+                  {t('notAMember')}{' '}
                   <IntlLink
                     href='/signup'
                     style={{ color: 'rgb(255, 253, 243)' }}
                   >
-                    Sign up now
+                    {t('signupNow')}
                   </IntlLink>
                 </Text>
               </div>

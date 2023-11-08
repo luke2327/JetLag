@@ -20,7 +20,7 @@ export default function LanguageSwitch() {
       bordered={false}
       defaultValue={locale}
       onChange={languageChange}
-      className='w-[84px]'
+      className='min-w-[84px]'
       options={[
         { value: 'en', label: 'English' },
         { value: 'ko', label: '한국어' },
