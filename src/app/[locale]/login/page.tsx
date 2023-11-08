@@ -91,7 +91,10 @@ export default function LoginPage() {
       {!blockingLoading && (
         <EaseOut className='flex w-full max-w-[400px] flex-col justify-center'>
           <TransparentLayer>
-            <Title level={3} className='text-reverse-color !mb-0 text-center'>
+            <Title
+              level={3}
+              className='auth-title text-reverse-color !mb-10 text-center'
+            >
               {t('login')}
             </Title>
             <Form
@@ -103,7 +106,7 @@ export default function LoginPage() {
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
               autoComplete='off'
-              className='!flex !w-full !flex-col rounded-md !pt-10'
+              className='!flex !w-full !flex-col rounded-md'
             >
               <div>
                 <Form.Item<FieldType>
