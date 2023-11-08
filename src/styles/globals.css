@@ -206,7 +206,11 @@ section {
   align-items: center;
 }
 
-.ivory * {
+/*.ivory * {*/
+/*  transition: all .15s;*/
+/*}*/
+
+* {
   transition: all .15s;
 }
 
@@ -330,8 +334,21 @@ select:focus {
   }
 }
 
-#header-drawer a {
-  color: #222;
+#header-drawer a, #header-drawer span, #header-drawer .ant-divider {
+  color: var(--reverseColor) !important;
+}
+
+#header-drawer .ant-divider {
+  border-top: 1px solid var(--reverseColor) !important;
+  opacity: 0.5;
+}
+
+#header-drawer .ant-drawer-body {
+  padding: 0.75rem;
+}
+
+#header-drawer .ant-select-selector {
+  padding: 0;
 }
 
 #language-selector div, #language-selector span {
