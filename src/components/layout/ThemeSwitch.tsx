@@ -33,6 +33,7 @@ export default function ThemeSwitch() {
       className='mr-2'
       onChange={themeChange}
       checked={setting.theme === 'dark'}
+      defaultChecked={setting.theme === 'dark'}
       checkedChildren={
         <Moon strokeWidth={siteConfig.lucideStrokeWidth} size={16} />
       }

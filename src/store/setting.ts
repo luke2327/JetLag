@@ -4,7 +4,7 @@ export interface Setting {
   theme: 'light' | 'dark';
 }
 export const settingState = atom<Setting>({
-  key: 'auth',
+  key: 'setting',
   default: {
     theme: 'light',
   },

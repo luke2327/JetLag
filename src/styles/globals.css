@@ -206,14 +206,6 @@ section {
   align-items: center;
 }
 
-/*.ivory * {*/
-/*  transition: all .15s;*/
-/*}*/
-
-* {
-  transition: all .15s;
-}
-
 .ant-input {
   padding: 4px 11px;
   box-sizing: border-box;
@@ -295,8 +287,9 @@ img {
   text-align: center !important;
 }
 
-h1, h2, h3, h4, h5, h6, strong, span, p, div, legend, fieldset, label, table, th, td, tr, li, ul, ol {
+h1, h2, h3, h4, h5, h6, strong, input, span, a, p, legend, fieldset, label, table, th, td, tr, li, ul, ol {
   text-wrap: balance !important;
+  transition: all .1s
 }
 
 [type='text']:focus,
