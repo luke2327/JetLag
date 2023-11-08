@@ -1,39 +1,40 @@
 import { Switch } from 'antd';
 import { Moon, Sun } from 'lucide-react';
-import { useRecoilState } from 'recoil';
-
-import { settingState } from '@/store/setting';
+import { useEffect, useState } from 'react';
 
 import { siteConfig } from '@/constant/config';
+import { SupportedTheme } from '@/interface/common';
 
 export default function ThemeSwitch() {
-  const [setting, setSetting] = useRecoilState(settingState);
-  const themeChange = (value: boolean) => {
-    if (value) {
-      document.documentElement.classList.remove('light');
-      document.documentElement.classList.add('dark');
-      (
-        document.querySelector('meta[name="theme-color"]') as Element
-      ).setAttribute('content', '#494336');
-      window.localStorage.setItem('mode', 'dark');
-      setSetting({ theme: 'dark' });
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-      (
-        document.querySelector('meta[name="theme-color"]') as Element
-      ).setAttribute('content', '#F8F5E3');
-      window.localStorage.setItem('mode', 'light');
-      setSetting({ theme: 'light' });
-    }
+  const [currentTheme, setCurrentTheme] = useState<SupportedTheme>('light');
+  const initTheme = (theme: SupportedTheme) => {
+    const isDark = theme === 'dark';
+
+    document.documentElement.classList.remove(isDark ? 'light' : 'dark');
+    document.documentElement.classList.add(isDark ? 'dark' : 'light');
+    (
+      document.querySelector('meta[name="theme-color"]') as Element
+    ).setAttribute('content', isDark ? '#494336' : '#F8F5E3');
+    window.localStorage.setItem('mode', isDark ? 'dark' : 'light');
+    setCurrentTheme(isDark ? 'dark' : 'light');
   };
+
+  const themeChange = (value: boolean) => {
+    initTheme(value ? 'dark' : 'light');
+  };
+
+  useEffect(() => {
+    if (window?.localStorage.getItem('mode')) {
+      initTheme(window?.localStorage.getItem('mode') as SupportedTheme);
+    }
+  }, []);
 
   return (
     <Switch
       className='mr-2'
       onChange={themeChange}
-      checked={setting.theme === 'dark'}
-      defaultChecked={setting.theme === 'dark'}
+      checked={currentTheme === 'dark'}
+      defaultChecked={currentTheme === 'dark'}
       checkedChildren={
         <Moon strokeWidth={siteConfig.lucideStrokeWidth} size={16} />
       }
