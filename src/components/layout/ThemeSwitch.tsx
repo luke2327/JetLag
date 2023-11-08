@@ -14,7 +14,7 @@ export default function ThemeSwitch() {
     document.documentElement.classList.add(isDark ? 'dark' : 'light');
     (
       document.querySelector('meta[name="theme-color"]') as Element
-    ).setAttribute('content', isDark ? '#494336' : '#F8F5E3');
+    ).setAttribute('content', isDark ? '#2f3044' : '#F8F5E3');
     window.localStorage.setItem('mode', isDark ? 'dark' : 'light');
     setCurrentTheme(isDark ? 'dark' : 'light');
   };
@@ -28,6 +28,10 @@ export default function ThemeSwitch() {
       initTheme(window?.localStorage.getItem('mode') as SupportedTheme);
     }
   }, []);
+
+  // useEffect(() => {
+  //   console.log(window?.localStorage.getItem('mode'));
+  // }, [currentTheme]);
 
   return (
     <Switch
