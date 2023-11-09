@@ -10,6 +10,7 @@ export interface Auth {
     birthday: string | Dayjs | null;
     sleepTime: string | Dayjs | null;
     wakeupTime: string | Dayjs | null;
+    messageToken: string[] | null;
   };
 }
 
@@ -22,6 +23,7 @@ export interface CompactAuth {
     birthday: string | Dayjs;
     sleepTime: string | Dayjs;
     wakeupTime: string | Dayjs;
+    messageToken: string[];
   };
 }
 
@@ -36,6 +38,7 @@ export const authState = atom<Auth>({
       birthday: null,
       sleepTime: null,
       wakeupTime: null,
+      messageToken: null
     },
   },
 });

@@ -24,6 +24,7 @@
     "clsx": "^1.2.1",
     "cookies-next": "^4.0.0",
     "dayjs": "^1.11.10",
+    "firebase": "^8.10.0",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.260.0",
     "moment": "^2.29.4",
