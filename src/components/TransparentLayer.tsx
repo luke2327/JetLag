@@ -8,7 +8,7 @@ export default function TransparentLayer({
   className?: string;
 }) {
   return (
-    <fieldset className={`transparent-layer mt-4 p-4 ${className}`}>
+    <fieldset className={`transparent-layer mt-2 p-4 ${className}`}>
       {children}
     </fieldset>
   );

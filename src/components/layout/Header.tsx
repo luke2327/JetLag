@@ -105,8 +105,7 @@ export default function Header() {
       <div id='nav-button' style={{ display: 'none' }} className='w-full'>
         <button
           onClick={openDrawer}
-          style={{ backgroundColor: 'transparent' }}
-          className='pl-2'
+          className='pl-2 !bg-transparent'
         >
           <Menu
             strokeWidth={siteConfig.lucideStrokeWidth}

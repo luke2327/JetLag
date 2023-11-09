@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   return (
-    <html className='light'>
+    <html className='light bg-clock h-full min-h-screen w-full bg-cover bg-no-repeat'>
       <body className={inter.className}>{children}</body>
     </html>
   );
