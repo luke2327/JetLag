@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     shortcut: '/jetlag.png',
     apple: '/jetlag.png',
   },
-  themeColor: '#F8F5E3',
+  themeColor: "#C8E7FF",
   viewport: {
     width: 'device-width',
     initialScale: 1,

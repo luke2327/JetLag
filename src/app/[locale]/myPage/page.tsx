@@ -16,7 +16,6 @@ import { useEffect, useState } from 'react';
 import { SetterOrUpdater, useRecoilState } from 'recoil';
 import '@/lib/firebase';
 
-import { getToken } from '@/lib/firebase';
 import useAxios from '@/hooks/axios';
 
 import EaseOut from '@/components/motion/EaseOut';
@@ -70,9 +69,9 @@ export default function MyPage() {
       }${minute}`;
     }
 
-    if (params.messageToken) {
-      params.messageToken = JSON.stringify(params.messageToken) as any;
-    }
+    // if (params.messageToken) {
+    //   params.messageToken = JSON.stringify(params.messageToken) as any;
+    // }
 
     await POST<{ success: boolean }>('/auth/updateUser', params, {
       withCredentials: true,
@@ -98,19 +97,19 @@ export default function MyPage() {
       setBlockLoading(false);
     }
 
-    Notification.requestPermission().then(async (permission) => {
-      if (permission !== 'granted') {
-        // 푸시 거부됐을 때 처리할 내용
-        console.log('notification denied');
-      } else {
-        // 푸시 승인됐을 때 처리할 내용
-        const token = await getToken() as string;
+    // Notification.requestPermission().then(async (permission) => {
+    //   if (permission !== 'granted') {
+    //     // 푸시 거부됐을 때 처리할 내용
+    //     console.log('notification denied');
+    //   } else {
+    //     // 푸시 승인됐을 때 처리할 내용
+    //     const token = await getToken() as string;
 
-        setAuth({ ...auth, user: { ...auth.user, messageToken: [...auth.user.messageToken, token] }});
+    //     setAuth({ ...auth, user: { ...auth.user, messageToken: [...auth.user.messageToken, token] }});
 
-        await onFinish({ ...auth.user, messageToken: [...auth.user.messageToken, token] }, false);
-      }
-    });
+    //     await onFinish({ ...auth.user, messageToken: [...auth.user.messageToken, token] }, false);
+    //   }
+    // });
   }, []);
 
   return (
