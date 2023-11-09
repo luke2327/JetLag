@@ -17,7 +17,6 @@ import StyledComponentsRegistry from '@/lib/AntdRegistry';
 import { toDayJs } from '@/lib/helper';
 import useAxios, { NetworkError } from '@/hooks/axios';
 
-import Background from '@/components/layout/Background';
 import Header from '@/components/layout/Header';
 import EaseOut from '@/components/motion/EaseOut';
 
@@ -61,7 +60,7 @@ export default function AppLayout({
             theme={{
               token: {
                 // colorPrimary: '#d0c79b',
-                colorPrimary: '#a09d9d',
+                colorPrimary: 'rgba(199, 214, 226, 0.539)',
                 borderRadius: 4,
 
                 // Alias Token
@@ -78,20 +77,18 @@ export default function AppLayout({
             }}
           >
             <StyledComponentsRegistry>
-              <Background>
-                <Header />
-                <Provider>
-                  <AuthProvider setLoading={setLoading}>
-                    <EaseOut>
-                      {loading ? (
-                        <div className='linear-text p-2'>Loading</div>
-                      ) : (
-                        <section className='ivory'>{children}</section>
-                      )}
-                    </EaseOut>
-                  </AuthProvider>
-                </Provider>
-              </Background>
+              <Header />
+              <Provider>
+                <AuthProvider setLoading={setLoading}>
+                  <EaseOut>
+                    {loading ? (
+                      <div className='linear-text p-2'>Loading</div>
+                    ) : (
+                      <section className='ivory'>{children}</section>
+                    )}
+                  </EaseOut>
+                </AuthProvider>
+              </Provider>
             </StyledComponentsRegistry>
           </ConfigProvider>
         </NextIntlClientProvider>
