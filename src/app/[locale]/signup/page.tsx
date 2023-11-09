@@ -57,7 +57,7 @@ export default function SignupPage() {
       <EaseOut className='flex w-full max-w-[400px] flex-col justify-center'>
         <TransparentLayer>
           {level === 1 && (
-            <Title level={3} className='text-reverse-color !mb-0 text-center'>
+            <Title level={3} className='auth-title text-reverse-color text-center'>
               {t('signup')}
             </Title>
           )}
@@ -71,7 +71,7 @@ export default function SignupPage() {
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
               autoComplete='off'
-              className='!flex !w-full !flex-col rounded-md !pt-10'
+              className='!flex !w-full !flex-col rounded-md'
             >
               <div>
                 <Form.Item<FieldType>
@@ -111,11 +111,10 @@ export default function SignupPage() {
                 </Button>
               </div>
               <div className='mt-4 flex items-center justify-center'>
-                <Text>
+                <Text className='text-reverse-color'>
                   {t('alreadyMember')}{' '}
                   <IntlLink
                     href='/login'
-                    style={{ color: 'rgb(255, 253, 243)' }}
                   >
                     {t('loginNow')}
                   </IntlLink>

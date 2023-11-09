@@ -147,12 +147,9 @@ export default function LoginPage() {
                 </Button>
               </div>
               <div className='mt-4 flex items-center justify-center'>
-                <Text>
+                <Text className='text-reverse-color'>
                   {t('notAMember')}{' '}
-                  <IntlLink
-                    href='/signup'
-                    style={{ color: 'rgb(255, 253, 243)' }}
-                  >
+                  <IntlLink href='/signup'>
                     {t('signupNow')}
                   </IntlLink>
                 </Text>
