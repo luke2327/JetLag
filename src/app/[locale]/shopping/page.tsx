@@ -1,6 +1,7 @@
 'use client';
 
-import { Card, Typography } from 'antd';
+import { Typography } from 'antd';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import EaseOut from '@/components/motion/EaseOut';
@@ -10,9 +11,10 @@ import TransparentLayer from '@/components/TransparentLayer';
 import shoppingItemInfos from '@/constant/shoppingItemInfos';
 
 const { Title } = Typography;
-const { Meta } = Card;
 
 export default function ShoppingPage() {
+  const t = useTranslations('shopping');
+  
   return (
     <main
       id='shopping'
@@ -21,17 +23,12 @@ export default function ShoppingPage() {
       <EaseOut className='flex flex-col justify-center'>
         <TransparentLayer>
           <Title level={3} className='text-reverse-color !mb-0 text-center'>
-            Shopping
+            {t('title')}
           </Title>
           <div className='mt-6 flex max-h-[70vh] flex-wrap items-center justify-center gap-6 overflow-x-hidden overflow-y-scroll'>
             {shoppingItemInfos.map((x, idx) => (
               <ShoppingCard key={idx} {...x} />
             ))}
-            {/*<ChevronRight*/}
-            {/*  color='#d0c79b'*/}
-            {/*  strokeWidth={siteConfig.lucideStrokeWidth}*/}
-            {/*  className='cursor-pointer'*/}
-            {/*/>*/}
           </div>
         </TransparentLayer>
       </EaseOut>

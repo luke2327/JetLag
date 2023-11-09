@@ -30,8 +30,8 @@
 
 :root.light {
   --primary: rgba(199, 214, 226, 0.75);
-  --linearStart: #f1f2f5;
-  --secondary: #b0daf9;
+  --linearStart: #f8f8e7;
+  --secondary: #efb09c;
   --secondarybrown: #aba085;
   --textPrimary: #6e6e6e;
   --reverseColor: #494336;

@@ -9,14 +9,14 @@
     "logout": "Logout"
   },
   "login": {
-    "login": "ログイン",
-    "signup": "アカウントを作成",
-    "email": "メール",
-    "password": "暗証番号",
-    "notAMember": "初めてご利用ですか?",
-    "signupNow": "新規登録はこちら",
-    "alreadyMember": "既にアカウントをお持ちですか？",
-    "loginNow": "ログインページへ",
+    "login": "Login",
+    "signup": "Signup",
+    "email": "Email",
+    "password": "Password",
+    "notAMember": "Not a member?",
+    "signupNow": "sign up now",
+    "alreadyMember": "Already member?",
+    "loginNow": "login now",
     "goLogin": "Go to login page"
   },
   "service": {
@@ -88,5 +88,8 @@
     "birthday": "Birthday",
     "sleepTime": "Sleep time",
     "wakeupTime": "Wakeup time"
+  },
+  "shopping": {
+    "title": "Shopping"
   }
 }

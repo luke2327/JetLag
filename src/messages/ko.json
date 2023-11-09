@@ -9,15 +9,15 @@
     "logout": "로그아웃"
   },
   "login": {
-    "login": "Login",
-    "signup": "Signup",
-    "email": "Email",
-    "password": "Password",
-    "notAMember": "Not a member?",
-    "signupNow": "sign up now",
-    "alreadyMember": "Already member？",
-    "loginNow": "login now",
-    "goLogin": "로그인페이지로 이동"
+    "login": "로그인",
+    "signup": "계정생성",
+    "email": "이메일",
+    "password": "패스워드",
+    "notAMember": "아직 회원이 아니신가요?",
+    "signupNow": "계정생성 페이지로 이동",
+    "alreadyMember": "이미 회원이신가요?",
+    "loginNow": "로그인 페이지로",
+    "goLogin": "로그인 페이지로 이동"
   },
   "service": {
     "title": "Jet Lag Service",
@@ -81,12 +81,15 @@
     "journeyPlan": "수면계획"
   },
   "myPage": {
-    "title": "My Page",
-    "email": "Email",
-    "age": "Age",
-    "phone": "Phone",
-    "birthday": "Birthday",
-    "sleepTime": "Sleep time",
-    "wakeupTime": "Wakeup time"
+    "title": "내정보",
+    "email": "이메일",
+    "age": "나이",
+    "phone": "휴대폰",
+    "birthday": "생일",
+    "sleepTime": "취침시간",
+    "wakeupTime": "기상시간"
+  },
+  "shopping": {
+    "title": "쇼핑"
   }
 }

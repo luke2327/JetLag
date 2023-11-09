@@ -88,5 +88,8 @@
     "birthday": "誕生日",
     "sleepTime": "睡眠時間",
     "wakeupTime": "起床時間"
+  },
+  "shopping": {
+    "title": "ショッピング"
   }
 }
