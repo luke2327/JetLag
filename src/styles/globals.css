@@ -35,6 +35,8 @@
   --secondarybrown: #aba085;
   --textPrimary: #6e6e6e;
   --reverseColor: #494336;
+  --bgLinearStart: rgba(147,207,255,1);
+  --bgLinearEnd: rgba(255,255,255,0);
   --transparentLinearStart: rgba(255,255,255,0.9);
   --transparentLinearEnd: rgba(223,229,236,0.4);
   --bgUrl: url('/images/light-bg3.jpg');
@@ -47,6 +49,8 @@
   --secondarybrown: #494336;
   --textPrimary: #F8F5E3;
   --reverseColor: #F8F5E3;
+  --bgLinearStart: rgba(22,34,61,1);
+  --bgLinearEnd: rgba(0,0,0,0);
   --transparentLinearStart: rgba(73,72,67,0.85);
   --transparentLinearEnd: rgba(75,73,60,0.4);
   --bgUrl: url('/images/dark-bg2.jpeg');
@@ -159,7 +163,7 @@
 }
 
 header {
-  background-color: transparent;
+  background: linear-gradient(180deg, var(--bgLinearStart) 0%, var(--bgLinearEnd) 100%);
 }
 
 .linear-text {

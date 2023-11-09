@@ -14,7 +14,7 @@ export default function ThemeSwitch() {
     document.documentElement.classList.add(isDark ? 'dark' : 'light');
     (
       document.querySelector('meta[name="theme-color"]') as Element
-    ).setAttribute('content', isDark ? '#2f3044' : '#F8F5E3');
+    ).setAttribute('content', isDark ? '#16223D' : '#93CFFF');
     window.localStorage.setItem('mode', isDark ? 'dark' : 'light');
     setCurrentTheme(isDark ? 'dark' : 'light');
   };
