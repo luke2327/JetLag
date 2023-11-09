@@ -29,26 +29,26 @@
 }
 
 :root.light {
-  --primary: #F8F5E3;
-  --linearStart: #F8F5E3;
-  --secondary: #fffdf3;
+  --primary: rgba(199, 214, 226, 0.75);
+  --linearStart: #f1f2f5;
+  --secondary: #b0daf9;
   --secondarybrown: #aba085;
   --textPrimary: #6e6e6e;
   --reverseColor: #494336;
-  --transparentLinearStart: 231,229,219,1;
-  --transparentLinearEnd: 230,220,200,0.4;
-  --bgUrl: url('/images/light-bg1.png');
+  --transparentLinearStart: rgba(255,255,255,0.9);
+  --transparentLinearEnd: rgba(223,229,236,0.4);
+  --bgUrl: url('/images/light-bg3.jpg');
 }
 
 :root.dark {
-  --primary: #2f3044;
+  --primary: rgba(48, 49, 69, 0.75);
   --linearStart: #6b6965;
   --secondary: #9e9581;
   --secondarybrown: #494336;
   --textPrimary: #F8F5E3;
   --reverseColor: #F8F5E3;
-  --transparentLinearStart: 73,72,67,1;
-  --transparentLinearEnd: 75,73,60,0.4;
+  --transparentLinearStart: rgba(73,72,67,0.85);
+  --transparentLinearEnd: rgba(75,73,60,0.4);
   --bgUrl: url('/images/dark-bg2.jpeg');
 }
 
@@ -159,7 +159,7 @@
 }
 
 header {
-  background-color: var(--primary);
+  background-color: transparent;
 }
 
 .linear-text {
@@ -182,6 +182,7 @@ label[for="myPage_birthday"],
 label[for="myPage_sleepTime"],
 label[for="myPage_wakeupTime"] {
   color: var(--reverseColor) !important;
+  box-shadow: none !important;
 }
 
 .ant-btn {
@@ -199,7 +200,7 @@ label[for="myPage_wakeupTime"] {
 }
 
 .transparent-layer {
-  background: linear-gradient(135deg, rgba(var(--transparentLinearStart)) 0%, rgba(var(--transparentLinearEnd)) 100%);
+  background: linear-gradient(135deg, var(--transparentLinearStart) 0%, var(--transparentLinearEnd) 100%);
   border-radius: 4px;
 }
 
@@ -250,6 +251,21 @@ section {
   width: 100% !important;
 }
 
+#myPage .ant-form-item {
+  margin-bottom: 1.25rem !important;
+}
+
+@media (max-width: 575px) {
+  #myPage :where(.css-dev-only-do-not-override-8xb16u).ant-form-item .ant-form-item-label {
+    padding-bottom: 4px !important;
+  }
+
+  #myPage .ant-form-item {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+
 #customer :where(.css-dev-only-do-not-override-omrqyq).ant-collapse>.ant-collapse-item >.ant-collapse-header {
   font-weight: bold;
 }
@@ -263,8 +279,12 @@ section {
 }
 
 button, [type='button'], [type='reset'], [type='submit'] {
-  background-color: #d0c79b;
+  background-color: var(--primary);
   background-image: unset;
+}
+
+.ant-switch {
+  background-color: var(--primary) !important;
 }
 
 img {
@@ -366,4 +386,8 @@ select:focus {
 
 .ant-switch-inner-checked {
   margin-top: 3px !important;
+}
+
+.\!bg-transparent, .ant-modal-close {
+  background-color: transparent !important;
 }

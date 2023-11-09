@@ -15,7 +15,7 @@ import { RangePickerProps } from 'antd/es/date-picker';
 import dayjs from 'dayjs';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MoveRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -192,11 +192,6 @@ export default function CalcFlight({
                       loadFlightList ||
                       (!journeyInfo.arrive && !journeyInfo.depart)
                     }
-                    style={{
-                      color: 'var(--textPrimary)',
-                      backgroundColor: 'rgb(255, 253, 243)',
-                      border: '1px solid #c0c0c0',
-                    }}
                     className='w-full whitespace-nowrap rounded-md !p-0'
                   >
                     {t('search')}
@@ -253,10 +248,7 @@ export default function CalcFlight({
         <div className='flex flex-col items-center'>
           {flightResult.plan?.length && flightResult.type === 'planning' ? (
             <div>
-              <Title level={5}>
-                {journeyInfo.depart.name} 에서 {journeyInfo.arrive.name} 로의
-                수면계획
-              </Title>
+              <JourneyPlanTitle journeyInfo={journeyInfo} />
               <div className='max-h-[54vh] overflow-scroll overflow-x-hidden'>
                 {flightResult.plan.map((x, idx) => {
                   if (x.title) {
@@ -376,4 +368,22 @@ export default function CalcFlight({
       )}
     </Modal>
   );
+}
+
+function JourneyPlanTitle({ journeyInfo }: { journeyInfo: JourneyInfo }) {
+  const locale = useLocale();
+  const t = useTranslations('service');
+  let message = '';
+
+  if (locale === 'en') {
+    message = `${t('from')} ${journeyInfo.depart.name} ${t('to')} ${journeyInfo.arrive.name} ${t('journeyPlan')}`;
+  } else if (locale === 'ko' || locale === 'ja') {
+    message = `${journeyInfo.depart.name} ${t('from')} ${journeyInfo.arrive.name} ${t('to')} ${t('journeyPlan')}`;
+  }
+
+  return (
+    <Title level={5}>
+      {message}
+    </Title>
+  )
 }

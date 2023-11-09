@@ -74,7 +74,11 @@
     "sleepNowCycle3": "３サイクル - ４時間半の睡眠",
     "sleepNowCycle4": "４サイクル - ６時間の睡眠",
     "sleepNowCycle5": "５サイクル - ７時間半の睡眠",
-    "sleepNowCycle6": "６サイクル - ９時間の睡眠"
+    "sleepNowCycle6": "６サイクル - ９時間の睡眠",
+
+    "from": "から",
+    "to": "への",
+    "journeyPlan": "睡眠計画"
   },
   "myPage": {
     "title": "マイページ",

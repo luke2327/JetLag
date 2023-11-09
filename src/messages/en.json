@@ -74,7 +74,11 @@
     "sleepNowCycle3": "For Three Cycles - Four and a half Hours of Sleep.",
     "sleepNowCycle4": "For Four Cycles - Six Hours of Sleep.",
     "sleepNowCycle5": "For Five Cycles: Seven and a half Hours of Sleep.",
-    "sleepNowCycle6": "For Six Cycles - Nine Hours of Sleep."
+    "sleepNowCycle6": "For Six Cycles - Nine Hours of Sleep.",
+
+    "from": "from",
+    "to": "to",
+    "journeyPlan": "sleep planning"
   },
   "myPage": {
     "title": "My Page",

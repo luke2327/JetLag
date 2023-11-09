@@ -74,7 +74,11 @@
     "sleepNowCycle3": "3사이클 - 4시간 30분 수면",
     "sleepNowCycle4": "4사이클 - 6시간 수면",
     "sleepNowCycle5": "5사이클 - 7시간 30분 수면",
-    "sleepNowCycle6": "6사이클 - 9시간 수면"
+    "sleepNowCycle6": "6사이클 - 9시간 수면",
+
+    "from": "에서",
+    "to": "로의",
+    "journeyPlan": "수면계획"
   },
   "myPage": {
     "title": "My Page",
