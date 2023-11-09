@@ -57,7 +57,7 @@ export default function SignupPage() {
       <EaseOut className='flex w-full max-w-[400px] flex-col justify-center'>
         <TransparentLayer>
           {level === 1 && (
-            <Title level={3} className='auth-title text-reverse-color text-center'>
+            <Title level={3} className='auth-title text-reverse-color text-center !mb-10'>
               {t('signup')}
             </Title>
           )}

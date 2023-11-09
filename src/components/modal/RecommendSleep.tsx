@@ -38,28 +38,29 @@ export default function RecommendSleep({
     time.setMinutes(minute);
 
     const cycles: Cycles = [];
+    const minus = type === 'sleepTime' ? 1 : -1;
 
     cycles.push({
-      date: new Date(time.getTime() - 270 * 60000),
+      date: new Date(time.getTime() + (270 * minus) * 60000),
       label: 'For Three Cycles - Four and a half Hours of Sleep.',
     });
     cycles.push({
-      date: new Date(cycles[0].date.getTime() - 270 * 60000),
+      date: new Date(cycles[0].date.getTime() + (90 * minus) * 60000),
       label: 'For Four Cycles - Six Hours of Sleep.',
     });
     cycles.push({
-      date: new Date(cycles[1].date.getTime() - 270 * 60000),
+      date: new Date(cycles[1].date.getTime() + (90 * minus) * 60000),
       label: 'For Five Cycles - Seven and a half Hours of Sleep.',
     });
     cycles.push({
-      date: new Date(cycles[2].date.getTime() - 270 * 60000),
+      date: new Date(cycles[2].date.getTime() + (90 * minus) * 60000),
       label: 'For Six Cycles - Nine Hours of Sleep.',
     });
 
     if (type === 'sleepTime') {
-      setCyclesSleep(cycles);
-    } else {
       setCyclesWakeup(cycles);
+    } else {
+      setCyclesSleep(cycles);
     }
   };
 
@@ -91,7 +92,7 @@ export default function RecommendSleep({
           activeKey={collapseKey}
           onChange={collapseOnChange}
         >
-          <Collapse.Panel key={1} header={t('sleepTime')}>
+          <Collapse.Panel key={1} header={t('sleepTimeRecommend')}>
             {cyclesSleep.length ? (
               <>
                 <div className='flex flex-col pl-6'>

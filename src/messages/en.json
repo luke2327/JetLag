@@ -33,6 +33,7 @@
     "hour": "Hour",
     "minute": "Minute",
     "result": "Result",
+    "sleepTimeRecommend": "Recommend sleep",
     "wakeupTimeRecommend": "Recommend wakeup",
     "calcSleepGuideMsg1": "Please keep in mind that you should be falling asleep at these times.",
     "calcSleepGuideMsg2": "The average human takes fourteen minutes to fall asleep, so plan accordingly!",

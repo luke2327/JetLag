@@ -37,6 +37,7 @@ export default function MyPage() {
 
   const onFinish = async (values: Partial<CompactAuth['user']>) => {
     const params = { ...values };
+    const authUpdateParams = { ...values } as CompactAuth['user'];
 
     if (values.birthday) {
       const birthday = values.birthday as any;
@@ -74,7 +75,7 @@ export default function MyPage() {
       },
     });
 
-    setAuth({ ...auth });
+    setAuth({ ...auth, user: authUpdateParams });
 
     messageApi.open({
       type: 'success',
@@ -88,6 +89,18 @@ export default function MyPage() {
     } else {
       setBlockLoading(false);
     }
+
+    // Notification.requestPermission().then((permission) => {
+    //   if (permission !== 'granted') {
+    //     // 푸시 거부됐을 때 처리할 내용
+    //     console.log(1);
+    //   } else {
+    //     // 푸시 승인됐을 때 처리할 내용
+    //
+    //     console.log(2);
+    //     getMsgToken();
+    //   }
+    // });
   }, []);
 
   return (

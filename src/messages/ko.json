@@ -21,7 +21,8 @@
   },
   "service": {
     "title": "Jet Lag Service",
-    "wakeupTimeRecommend": "취침시간 추천",
+    "sleepTimeRecommend": "취침시간 추천",
+    "wakeupTimeRecommend": "기상시간 추천",
     "calculateSleepTime": "기상시간 계산",
     "calculateJatlag": "Jetlag 계산",
     "sleepTime": "취침시간",
