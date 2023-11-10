@@ -14,8 +14,8 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from 'next-intl/client';
 import { useEffect, useState } from 'react';
 import { SetterOrUpdater, useRecoilState } from 'recoil';
-import '@/lib/firebase';
 
+// import '@/lib/firebase';
 import useAxios from '@/hooks/axios';
 
 import EaseOut from '@/components/motion/EaseOut';
