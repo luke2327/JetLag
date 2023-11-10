@@ -1,13 +1,7 @@
 {
     "id": "jetlag",
-    "theme_color": {
-        "light": "#93CFFF",
-        "dark": "#16223d"
-    },
-    "background_color": { 
-        "light": "#93CFFF",
-        "dark": "#16223d"
-    },
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "display": "standalone",
     "scope": ".",
     "start_url": "/",

@@ -10,9 +10,11 @@ export default function useTheme(): [SupportedTheme, ((value: boolean) => void)]
 
     document.documentElement.classList.remove(isDark ? 'light' : 'dark');
     document.documentElement.classList.add(isDark ? 'dark' : 'light');
-    (
-      document.querySelector('meta[name="theme-color"]') as Element
-    ).setAttribute('content', isDark ? '#16223D' : '#93CFFF');
+    // (
+    //   document.querySelector('meta[name="theme-color"]') as Element
+    // )
+    // .setAttribute('content', isDark ? 'currentcolor' : 'currentcolor');
+    // .setAttribute('content', isDark ? '#16223D' : '#93CFFF');
     window.localStorage.setItem('mode', isDark ? 'dark' : 'light');
     setCurrentTheme(isDark ? 'dark' : 'light');
   };
@@ -22,7 +24,7 @@ export default function useTheme(): [SupportedTheme, ((value: boolean) => void)]
   };
 
   useEffect(() => {
-    initTheme('light');
+    // initTheme('light');
 
     if (window?.localStorage.getItem('mode')) {
       initTheme(window?.localStorage.getItem('mode') as SupportedTheme);
